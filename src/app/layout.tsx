@@ -1,3 +1,4 @@
+import { Providers } from "@/providers/providers";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -14,9 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-mode="dark">
-      <body className={inter.className + "text-black dark:text-white"}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={inter.className + "text-black dark:text-white"}
+        suppressHydrationWarning
+      >
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
-import { SunIcon } from "lucide-react";
+import Icon from "@/components/header/Icon";
+import ThemeIcon from "@/components/header/ThemeIcon";
 import { FaGithub } from "react-icons/fa";
 import { MdKeyboardCommandKey, MdOutlineSearch } from "react-icons/md";
 
@@ -15,12 +16,10 @@ export default function Home() {
           </span>
         </div>
         <div className="flex justify-end gap-2 items-center">
-          <div className="p-2 rounded-full hover:bg-white dark:hover:bg-neutral-800 transition-colors duration-300 cursor-pointer">
-            <SunIcon size={20} />
-          </div>
-          <div className="p-2 rounded-full hover:bg-white dark:hover:bg-neutral-800 transition-colors duration-300 cursor-pointer">
+          <ThemeIcon />
+          <Icon>
             <FaGithub size={20} />
-          </div>
+          </Icon>
         </div>
       </header>
       <main className="h-[calc(100vh-55px)] flex">
