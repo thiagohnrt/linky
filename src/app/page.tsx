@@ -1,5 +1,5 @@
-import Icon from "@/components/header/Icon";
-import ThemeIcon from "@/components/header/ThemeIcon";
+import Icon from "@/components/header_/Icon";
+import ThemeIcon from "@/components/header_/ThemeIcon";
 import { Settings2Icon } from "lucide-react";
 import { FaGithub, FaBookmark } from "react-icons/fa";
 import { MdKeyboardCommandKey, MdOutlineSearch } from "react-icons/md";
