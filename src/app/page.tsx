@@ -1,4 +1,5 @@
 import Icon from "@/components/Header/Icon";
+import Search from "@/components/Header/Search";
 import ThemeIcon from "@/components/Header/ThemeIcon";
 import { Settings2Icon } from "lucide-react";
 import { FaGithub, FaBookmark } from "react-icons/fa";
@@ -13,13 +14,7 @@ export default function Home() {
           <span className="pon select-none ml-2 text-xl">Bookmark Manager</span>
         </div>
         <div className="flex gap-6">
-          <div className="w-64 p-2 gap-2 flex items-center cursor-pointer bg-white dark:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors duration-300">
-            <MdOutlineSearch size={20} />
-            <span className="flex-auto text-neutral-400">Search</span>
-            <span className="flex items-center p-1 text-xs bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
-              <MdKeyboardCommandKey />K
-            </span>
-          </div>
+          <Search />
           <div className="flex justify-end gap-2 items-center">
             <Icon>
               <Settings2Icon size={20} />
