@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { SunIcon, MoonStarIcon } from "lucide-react";
+import { BsCircleHalf } from "react-icons/bs";
 import Icon from "./Icon";
 import { useTheme } from "next-themes";
 
@@ -31,7 +32,7 @@ export default function ThemeIcon() {
           <MoonStarIcon size={20} />
         )
       ) : (
-        <></>
+        <BsCircleHalf size={20} />
       )}
     </Icon>
   );
