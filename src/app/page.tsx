@@ -2,8 +2,7 @@ import Icon from "@/components/Header/Icon";
 import Search from "@/components/Header/Search";
 import ThemeIcon from "@/components/Header/ThemeIcon";
 import { Settings2Icon } from "lucide-react";
-import { FaGithub, FaBookmark } from "react-icons/fa";
-import { MdKeyboardCommandKey, MdOutlineSearch } from "react-icons/md";
+import { FaBookmark, FaGithub } from "react-icons/fa";
 
 export default function Home() {
   return (

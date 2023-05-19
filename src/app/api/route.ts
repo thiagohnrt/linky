@@ -1,0 +1,24 @@
+import { Bookmark } from "@/interfaces/Bookmark";
+import { Folder } from "@/interfaces/Folder";
+import BookmarkModel from "@/models/Bookmark";
+import FolderModel from "@/models/Folder";
+import dbConnection from "@/services/mongodb";
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  await dbConnection();
+  const folders = await FolderModel.find<Folder>({});
+  const bookmarks = await BookmarkModel.find<Bookmark>({});
+
+  interface Bookmarks extends Folder {
+    data: Bookmark[];
+  }
+
+  const data = folders.map<Bookmarks>((folder) => ({
+    id: folder.id,
+    name: folder.name,
+    data: bookmarks.filter(({ folderId }) => folder.id == folderId),
+  }));
+
+  return NextResponse.json(data);
+}
