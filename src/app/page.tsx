@@ -1,6 +1,7 @@
 import Icon from "@/components/Header/Icon";
 import Search from "@/components/Header/Search";
 import ThemeIcon from "@/components/Header/ThemeIcon";
+import { Explorer } from "@/components/Explorer";
 import { Settings2Icon } from "lucide-react";
 import { FaBookmark, FaGithub } from "react-icons/fa";
 
@@ -27,9 +28,8 @@ export default function Home() {
         </div>
       </header>
       <main className="h-[calc(100vh-55px)] flex">
-        <div className="w-[250px] px-8 py-4 border-r dark:border-none dark:bg-neutral-800 transition-colors duration-300">
-          Side Bar
-        </div>
+        {/* @ts-expect-error Server Component */}
+        <Explorer />
         <div className="px-8 py-4 flex-auto dark:bg-neutral-900 transition-colors duration-300">
           Bookmark
         </div>
