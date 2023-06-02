@@ -3,7 +3,7 @@
 import { useState, ReactNode } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { ChevronDown, ChevronRight, FolderIcon } from "lucide-react";
-import { Bookmarks } from "@/interfaces/Bookmark";
+import { MenuFolder } from "./MenuFolder";
 
 interface FolderProps {
   title: string;
@@ -14,10 +14,13 @@ export function Folder({ title, children }: FolderProps) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Collapsible.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Collapsible.Trigger className="flex gap-1 p-1 items-center w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-900 transition-colors duration-300">
-        {isOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
-        <span>{title}</span>
-      </Collapsible.Trigger>
+      <div className="flex justify-between [&>.folder-more]:hover:opacity-100 hover:bg-neutral-200 dark:hover:bg-neutral-900 transition-colors duration-300">
+        <Collapsible.Trigger className="flex gap-1 p-1 items-center w-full cursor-pointer">
+          {isOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+          <span className="flex-1 text-left">{title}</span>
+        </Collapsible.Trigger>
+        <MenuFolder />
+      </div>
       <Collapsible.Content>{children}</Collapsible.Content>
     </Collapsible.Root>
   );
