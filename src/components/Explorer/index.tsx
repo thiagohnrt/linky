@@ -1,8 +1,6 @@
 import { Bookmarks } from "@/interfaces/Bookmark";
+import { Bookmark } from "./Bookmark";
 import { Folder } from "./Folder";
-import Favicon from "../Favicon";
-import Link from "next/link";
-import { FcOpenedFolder } from "react-icons/fc";
 import { MenuExplorer } from "./MenuExplorer";
 
 async function getData(): Promise<Bookmarks[]> {
@@ -32,15 +30,11 @@ export async function Explorer() {
             {folder.data.length > 0 ? (
               <div className="flex flex-col py-1">
                 {folder.data.map((bookmark, index) => (
-                  <Link
-                    href={bookmark.url}
-                    target="_blank"
-                    className="flex gap-2 pl-4 py-1 items-center w-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-900 transition-colors duration-300"
+                  <Bookmark
+                    url={bookmark.url}
+                    name={bookmark.name}
                     key={"link_key_" + index}
-                  >
-                    <Favicon url={bookmark.url} />
-                    <span>{bookmark.name}</span>
-                  </Link>
+                  />
                 ))}
               </div>
             ) : (
