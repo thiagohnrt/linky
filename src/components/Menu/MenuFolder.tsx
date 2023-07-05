@@ -25,7 +25,8 @@ export function MenuFolder() {
     <DropdownMenu items={items}>
       <button
         type="button"
-        className="p-1 pr-2 folder-more opacity-0 transition-opacity duration-300"
+        className="p-1 pr-2 folder-more opacity-0 outline-none transition-opacity duration-300"
+        tabIndex={-1}
       >
         <MdOutlineMoreHoriz size={16} />
       </button>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Favicon from "../Favicon";
-import { MenuBookmark } from "./MenuBookmark";
+import { MenuBookmark } from "../Menu/MenuBookmark";
 
 interface BookmarkProps {
   url: string;

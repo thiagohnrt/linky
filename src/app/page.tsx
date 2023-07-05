@@ -4,6 +4,7 @@ import ThemeIcon from "@/components/Header/ThemeIcon";
 import { Explorer } from "@/components/Explorer";
 import { Settings2Icon } from "lucide-react";
 import { FaBookmark, FaGithub } from "react-icons/fa";
+import { Content } from "@/components/Content";
 
 export default function Home() {
   return (
@@ -30,9 +31,8 @@ export default function Home() {
       <main className="h-[calc(100vh-55px)] flex">
         {/* @ts-expect-error Server Component */}
         <Explorer />
-        <div className="px-8 py-4 flex-auto dark:bg-neutral-900 transition-colors duration-300">
-          Bookmark
-        </div>
+        {/* @ts-expect-error Server Component */}
+        <Content />
       </main>
     </>
   );
