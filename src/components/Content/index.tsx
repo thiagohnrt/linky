@@ -19,7 +19,7 @@ export async function Content() {
   const folders = await getData();
 
   return (
-    <div className="px-8 py-4 flex-auto dark:bg-neutral-900 transition-colors duration-300">
+    <div className="px-8 py-4 flex-auto overflow-auto dark:bg-neutral-900 transition-colors duration-300">
       {folders.length > 0 ? (
         folders.map((folder, index) => (
           <Folder title={folder.name} key={"folder_content_key_" + index}>

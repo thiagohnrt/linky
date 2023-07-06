@@ -19,7 +19,7 @@ export async function Explorer() {
   const folders = await getData();
 
   return (
-    <div className="w-[250px] bg-neutral-100 dark:bg-neutral-800 transition-colors duration-300">
+    <div className="w-[250px] overflow-auto bg-neutral-100 dark:bg-neutral-800 transition-colors duration-300">
       <div className="flex justify-between items-center py-2 pr-3 ml-6 uppercase text-sm">
         Explorer
         <MenuExplorer />
