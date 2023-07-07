@@ -22,7 +22,7 @@ export default function Search() {
       <Dialog
         open={isOpen}
         onClose={setIsOpen}
-        className="bg-neutral-200 dark:bg-neutral-950"
+        className="bg-neutral-100 dark:bg-neutral-950"
       >
         <div className="px-8 pt-4 w-[600px] h-[90vh]">
           <div className="p-2 gap-2 flex items-center bg-white dark:bg-neutral-900">

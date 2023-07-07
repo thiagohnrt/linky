@@ -2,6 +2,7 @@
 
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import * as RD from "@radix-ui/react-dialog";
+import { MdClose } from "react-icons/md";
 
 interface DialogProps {
   open: boolean;
@@ -9,6 +10,7 @@ interface DialogProps {
   title?: string;
   className?: string;
   children?: ReactNode;
+  closeIcon?: boolean;
 }
 
 export default function Dialog({
@@ -17,6 +19,7 @@ export default function Dialog({
   title,
   className,
   children,
+  closeIcon = false,
 }: DialogProps) {
   return (
     <RD.Root open={open} onOpenChange={() => onClose(false)}>
@@ -28,8 +31,21 @@ export default function Dialog({
             className
           }
         >
-          <RD.Title>{title}</RD.Title>
+          {title ? (
+            <RD.Title className="text-2xl pb-5">{title}</RD.Title>
+          ) : (
+            <></>
+          )}
           {children}
+          {closeIcon ? (
+            <RD.Close asChild>
+              <button aria-label="Close">
+                <MdClose />
+              </button>
+            </RD.Close>
+          ) : (
+            <></>
+          )}
         </RD.Content>
       </RD.Portal>
     </RD.Root>

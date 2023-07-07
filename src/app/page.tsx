@@ -5,6 +5,7 @@ import { Explorer } from "@/components/Explorer";
 import { Settings2Icon } from "lucide-react";
 import { FaBookmark, FaGithub } from "react-icons/fa";
 import { Content } from "@/components/Content";
+import { BookmarkDialog } from "@/components/Bookmark/BookmarkDialog";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
         <Explorer />
         {/* @ts-expect-error Server Component */}
         <Content />
+        <BookmarkDialog />
       </main>
     </>
   );

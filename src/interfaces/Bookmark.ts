@@ -1,4 +1,3 @@
-import { Schema } from "mongoose";
 import { Folder } from "./Folder";
 
 export interface Bookmark {

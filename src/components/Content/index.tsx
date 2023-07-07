@@ -2,6 +2,7 @@ import { Bookmarks } from "@/interfaces/Bookmark";
 import { Folder } from "./Folder";
 import { Bookmark } from "./Bookmark";
 import Image from "next/image";
+import { BookmarkAction } from "../Bookmark/BookmarkAction";
 
 async function getData(): Promise<Bookmarks[]> {
   try {
@@ -37,9 +38,7 @@ export async function Content() {
                   <div className="text-sm pb-2">
                     You have no bookmarks here yet.
                   </div>
-                  <button className="my-2 py-1 px-12 bg-neutral-200 dark:bg-neutral-950 hover:bg-neutral-300 dark:hover:bg-neutral-800 transition-colors duration-300">
-                    New Bookmark
-                  </button>
+                  <BookmarkAction style="button" type="new" />
                 </div>
               )}
             </div>
@@ -56,10 +55,8 @@ export async function Content() {
           />
           <p>You have no bookmarks here yet. Add your first bookmark now!</p>
           <div className="flex gap-4 mt-3">
-            <button className="my-2 py-1 px-12 bg-neutral-200 dark:bg-neutral-950 hover:bg-neutral-300 dark:hover:bg-neutral-800 transition-colors duration-300">
-              New Bookmark
-            </button>
-            <button className="my-2 py-1 px-12 bg-neutral-200 dark:bg-neutral-950 hover:bg-neutral-300 dark:hover:bg-neutral-800 transition-colors duration-300">
+            <BookmarkAction style="button" type="new" />
+            <button className="py-1 px-12 bg-neutral-200 dark:bg-neutral-950 hover:bg-neutral-300 dark:hover:bg-neutral-800 transition-colors duration-300">
               New Folder
             </button>
           </div>
