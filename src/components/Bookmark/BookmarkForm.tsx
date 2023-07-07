@@ -1,14 +1,38 @@
 import * as Form from "@radix-ui/react-form";
 import { Button } from "../Form/Button";
-import { Dispatch, MouseEventHandler, SetStateAction } from "react";
+import { useState, FormEvent } from "react";
 
 interface BookmarkFormProps {
-  onCancel?: MouseEventHandler<HTMLButtonElement> | undefined;
+  onSaved?: () => void;
+  onCancel?: () => void;
 }
 
-export function BookmarkForm({ onCancel = () => {} }: BookmarkFormProps) {
+export function BookmarkForm({
+  onSaved = () => {},
+  onCancel = () => {},
+}: BookmarkFormProps) {
+  const [url, setUrl] = useState("");
+  const [name, setName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsLoading(true);
+    const { status } = await fetch(`/api/bookmark`, {
+      method: "post",
+      body: JSON.stringify({
+        url,
+        name,
+      }),
+    });
+    if (status === 200) {
+      onSaved();
+    }
+    setIsLoading(false);
+  };
+
   return (
-    <Form.Root>
+    <Form.Root onSubmit={handleSubmit}>
       <Form.Field name="url">
         <div className="flex align-baseline justify-between">
           <Form.Label>URL</Form.Label>
@@ -19,6 +43,8 @@ export function BookmarkForm({ onCancel = () => {} }: BookmarkFormProps) {
         <Form.Control asChild>
           <input
             type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
             className="p-2 w-full outline-none bg-white dark:bg-neutral-900"
             autoComplete="off"
             required
@@ -35,6 +61,8 @@ export function BookmarkForm({ onCancel = () => {} }: BookmarkFormProps) {
         <Form.Control asChild>
           <input
             type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="p-2 w-full outline-none bg-white dark:bg-neutral-900"
             autoComplete="off"
             required
@@ -51,7 +79,7 @@ export function BookmarkForm({ onCancel = () => {} }: BookmarkFormProps) {
       </Form.Field>
       <div className="flex justify-between mt-4">
         <Form.Submit asChild>
-          <Button>Save</Button>
+          <Button loading={isLoading}>Save</Button>
         </Form.Submit>
         <Button type="button" variant="outlined" onClick={onCancel}>
           Cancel
