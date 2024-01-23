@@ -1,29 +1,49 @@
 import * as Form from "@radix-ui/react-form";
 import { Button } from "../Form/Button";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect, useCallback } from "react";
+import { Folder } from "@/interfaces/Folder";
 
 interface BookmarkFormProps {
   onSaved?: () => void;
   onCancel?: () => void;
 }
 
+async function getData(): Promise<Folder[]> {
+  try {
+    const response = await fetch(`http://localhost:3000/api/folder`, {
+      // cache: "no-store",
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+  return [];
+}
+
 export function BookmarkForm({
   onSaved = () => {},
   onCancel = () => {},
 }: BookmarkFormProps) {
-  const [url, setUrl] = useState("");
-  const [name, setName] = useState("");
+  const initialFolders: Folder[] = [];
+  const [folders, setFolders] = useState(initialFolders);
   const [isLoading, setIsLoading] = useState(false);
+
+  const fetchFolders = useCallback(async () => {
+    const data = await getData();
+    setFolders(data);
+  }, []);
+
+  useEffect(() => {
+    fetchFolders();
+  }, [fetchFolders]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
+    const data = Object.fromEntries(new FormData(event.currentTarget));
     const { status } = await fetch(`/api/bookmark`, {
       method: "post",
-      body: JSON.stringify({
-        url,
-        name,
-      }),
+      body: JSON.stringify(data),
     });
     if (status === 200) {
       onSaved();
@@ -43,10 +63,9 @@ export function BookmarkForm({
         <Form.Control asChild>
           <input
             type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
             className="p-2 w-full outline-none bg-white dark:bg-neutral-900"
             autoComplete="off"
+            placeholder="https://example.com"
             required
           />
         </Form.Control>
@@ -61,20 +80,31 @@ export function BookmarkForm({
         <Form.Control asChild>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
             className="p-2 w-full outline-none bg-white dark:bg-neutral-900"
             autoComplete="off"
             required
           />
         </Form.Control>
       </Form.Field>
-      <Form.Field name="folder" className="mt-2">
+      <Form.Field name="folderId" className="mt-2">
         <div className="flex align-baseline justify-between">
           <Form.Label>Folder</Form.Label>
+          <Form.Message match="valueMissing" className="text-red-600">
+            Please select a folder
+          </Form.Message>
         </div>
         <Form.Control asChild>
-          <select className="p-2 w-full outline-none bg-white dark:bg-neutral-900"></select>
+          <select
+            className="p-2 w-full outline-none bg-white dark:bg-neutral-900"
+            required
+          >
+            <option value="">Select</option>
+            {folders.map((folder, i) => (
+              <option value={folder._id} key={"folder_opt-" + i}>
+                {folder.name}
+              </option>
+            ))}
+          </select>
         </Form.Control>
       </Form.Field>
       <div className="flex justify-between mt-4">

@@ -1,4 +1,4 @@
 export interface Folder {
-  id: string;
+  _id: string;
   name: string;
 }

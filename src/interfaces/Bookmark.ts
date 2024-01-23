@@ -1,7 +1,7 @@
 import { Folder } from "./Folder";
 
 export interface Bookmark {
-  id: string;
+  _id: string;
   name: string;
   url: string;
   used: number;

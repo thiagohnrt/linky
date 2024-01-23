@@ -3,6 +3,12 @@ import FolderModel from "@/models/Folder";
 import dbConnection from "@/services/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 
+export async function GET() {
+  await dbConnection();
+  const folders = await FolderModel.find<Folder>({});
+  return NextResponse.json(folders);
+}
+
 export async function POST(req: NextRequest) {
   await dbConnection();
   const body: Folder = await req.json();
