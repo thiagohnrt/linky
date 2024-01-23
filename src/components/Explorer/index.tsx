@@ -43,7 +43,12 @@ export async function Explorer() {
                 <div className="text-sm pb-2">
                   You have no bookmarks here yet.
                 </div>
-                <BookmarkAction style="button" type="new" className="w-full" />
+                <BookmarkAction
+                  folderKey={folder.key}
+                  style="button"
+                  type="new"
+                  className="w-full"
+                />
               </div>
             )}
           </Folder>

@@ -11,9 +11,9 @@ export async function GET() {
   const bookmarks = await BookmarkModel.find<Bookmark>({});
 
   const data = folders.map<Bookmarks>((folder) => ({
-    _id: folder._id,
     name: folder.name,
-    data: bookmarks.filter(({ folderId }) => folder._id == folderId),
+    key: folder.key,
+    data: bookmarks.filter(({ folderKey }) => folder.key === folderKey),
   }));
 
   return NextResponse.json(data);

@@ -1,7 +1,8 @@
 import * as Form from "@radix-ui/react-form";
 import { Button } from "../Form/Button";
-import { useState, FormEvent, useEffect, useCallback } from "react";
+import { useState, FormEvent, useEffect, useCallback, useContext } from "react";
 import { Folder } from "@/interfaces/Folder";
+import { BookmarkContext } from "@/contexts/bookmarkContext";
 
 interface BookmarkFormProps {
   onSaved?: () => void;
@@ -24,6 +25,7 @@ export function BookmarkForm({
   onSaved = () => {},
   onCancel = () => {},
 }: BookmarkFormProps) {
+  const { folderKey } = useContext(BookmarkContext);
   const initialFolders: Folder[] = [];
   const [folders, setFolders] = useState(initialFolders);
   const [isLoading, setIsLoading] = useState(false);
@@ -89,7 +91,7 @@ export function BookmarkForm({
           />
         </Form.Control>
       </Form.Field>
-      <Form.Field name="folderId" className="mt-2">
+      <Form.Field name="folderKey" className="mt-2">
         <div className="flex align-baseline justify-between">
           <Form.Label>Folder</Form.Label>
           <Form.Message match="valueMissing" className="text-red-600">
@@ -103,7 +105,7 @@ export function BookmarkForm({
           >
             <option value="">Select</option>
             {folders.map((folder, i) => (
-              <option value={folder._id} key={"folder_opt-" + i}>
+              <option value={folder.key} key={"folder_opt-" + i}>
                 {folder.name}
               </option>
             ))}

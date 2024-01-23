@@ -6,7 +6,7 @@ const BookmarkSchema = new Schema<Bookmark>({
   url: String,
   used: { type: Number, default: 0 },
   searched: { type: Number, default: 0 },
-  folderId: String,
+  folderKey: String,
 });
 
 const BookmarkModel =

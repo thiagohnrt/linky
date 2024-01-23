@@ -11,6 +11,7 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
   const data: Bookmarks[] = [];
   const [isOpenFormBookmark, setIsOpenFormBookmark] = useState(false);
   const [isOpenFormFolder, setIsOpenFormFolder] = useState(false);
+  const [folderKey, setFolderKey] = useState("");
   const [bookmarks, setBookmarks] = useState(data);
   return (
     <BookmarkContext.Provider
@@ -19,6 +20,8 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
         setIsOpenFormBookmark,
         isOpenFormFolder,
         setIsOpenFormFolder,
+        folderKey,
+        setFolderKey,
         bookmarks,
         setBookmarks,
       }}

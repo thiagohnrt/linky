@@ -38,7 +38,11 @@ export async function Content() {
                   <div className="text-sm pb-2">
                     You have no bookmarks here yet.
                   </div>
-                  <BookmarkAction style="button" type="new" />
+                  <BookmarkAction
+                    folderKey={folder.key}
+                    style="button"
+                    type="new"
+                  />
                 </div>
               )}
             </div>

@@ -3,6 +3,7 @@ import mongoose, { Schema } from "mongoose";
 
 const FolderSchema = new Schema<Folder>({
   name: String,
+  key: String,
 });
 
 const FolderModel =
