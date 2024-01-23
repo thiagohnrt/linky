@@ -59,10 +59,13 @@ export function BookmarkForm({
           <Form.Message match="valueMissing" className="text-red-600">
             Please enter a url
           </Form.Message>
+          <Form.Message match="typeMismatch" className="text-red-600">
+            Please enter a valid url
+          </Form.Message>
         </div>
         <Form.Control asChild>
           <input
-            type="text"
+            type="url"
             className="p-2 w-full outline-none bg-white dark:bg-neutral-900"
             autoComplete="off"
             placeholder="https://example.com"
