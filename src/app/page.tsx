@@ -6,6 +6,7 @@ import { Settings2Icon } from "lucide-react";
 import { FaBookmark, FaGithub } from "react-icons/fa";
 import { Content } from "@/components/Content";
 import { BookmarkDialog } from "@/components/Bookmark/BookmarkDialog";
+import { FolderDialog } from "@/components/Folder/FolderDialog";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
         {/* @ts-expect-error Server Component */}
         <Content />
         <BookmarkDialog />
+        <FolderDialog />
       </main>
     </>
   );

@@ -7,9 +7,9 @@ import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { useRouter } from "next/navigation";
 
 export function BookmarkDialog() {
+  const router = useRouter();
   const { isOpenFormBookmark, setIsOpenFormBookmark, setFolderKey } =
     useContext(BookmarkContext);
-  const router = useRouter();
 
   const handleSaved = () => {
     setIsOpenFormBookmark(false);

@@ -6,7 +6,8 @@ import { useContext } from "react";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 
 export function MenuExplorer() {
-  const { setIsOpenFormBookmark } = useContext(BookmarkContext);
+  const { setIsOpenFormBookmark, setIsOpenFormFolder } =
+    useContext(BookmarkContext);
   const items: ItemMenu[] = [
     {
       text: "New Bookmark",
@@ -18,7 +19,9 @@ export function MenuExplorer() {
     {
       text: "New Folder",
       keyboard: "⌘D",
-      click: () => {},
+      click: () => {
+        setIsOpenFormFolder(true);
+      },
     },
   ];
   return (
