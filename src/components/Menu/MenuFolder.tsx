@@ -8,13 +8,14 @@ interface MenuFolderProps {
 }
 
 export function MenuFolder({ folderKey }: MenuFolderProps) {
-  const { setIsOpenFormBookmark, setFolderKey } = useContext(BookmarkContext);
+  const { setIsOpenFormBookmark, setBookmarkData } =
+    useContext(BookmarkContext);
   const items: ItemMenu[] = [
     {
       text: "New Bookmark",
       keyboard: "⌘B",
       click: () => {
-        setFolderKey(folderKey);
+        setBookmarkData({ name: "", url: "", folderKey });
         setIsOpenFormBookmark(true);
       },
     },

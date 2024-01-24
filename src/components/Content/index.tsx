@@ -28,8 +28,7 @@ export async function Content() {
               {folder.data.length > 0 ? (
                 folder.data.map((bookmark, index) => (
                   <Bookmark
-                    url={bookmark.url}
-                    name={bookmark.name}
+                    bookmark={bookmark}
                     key={"bookmark_content_key_" + index}
                   />
                 ))

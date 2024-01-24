@@ -1,20 +1,20 @@
 import Link from "next/link";
 import Favicon from "../Favicon";
+import { Bookmark } from "@/interfaces/Bookmark";
 
 interface BookmarkProps {
-  url: string;
-  name: string;
+  bookmark: Bookmark;
 }
 
-export function Bookmark({ url, name }: BookmarkProps) {
+export function Bookmark({ bookmark }: BookmarkProps) {
   return (
     <Link
-      href={url}
+      href={bookmark.url ?? ""}
       target="_blank"
       className="h-12 px-2 py-1 flex items-center bg-neutral-100 dark:bg-neutral-800"
     >
-      <Favicon url={url} className="mr-2" />
-      <span className="line-clamp-2">{name}</span>
+      <Favicon url={bookmark.url ?? ""} className="mr-2" />
+      <span className="line-clamp-2">{bookmark.name}</span>
     </Link>
   );
 }

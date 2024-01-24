@@ -16,10 +16,11 @@ export function BookmarkAction({
   className = "",
   folderKey = "",
 }: BookmarkActionProps) {
-  const { setIsOpenFormBookmark, setFolderKey } = useContext(BookmarkContext);
+  const { setIsOpenFormBookmark, setBookmarkData } =
+    useContext(BookmarkContext);
 
   const handleOpenFormBookmark = () => {
-    setFolderKey(folderKey);
+    setBookmarkData({ name: "", url: "", folderKey });
     setIsOpenFormBookmark(true);
   };
 

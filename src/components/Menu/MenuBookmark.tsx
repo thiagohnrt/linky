@@ -1,11 +1,24 @@
 import { MdOutlineMoreHoriz } from "react-icons/md";
 import DropdownMenu, { ItemMenu } from "../DropdownMenu";
+import { useContext } from "react";
+import { BookmarkContext } from "@/contexts/bookmarkContext";
+import { Bookmark } from "@/interfaces/Bookmark";
 
-export function MenuBookmark() {
+interface MenuBookmarkProps {
+  bookmark: Bookmark;
+}
+
+export function MenuBookmark({ bookmark }: MenuBookmarkProps) {
+  const { setIsOpenFormBookmark, setBookmarkData } =
+    useContext(BookmarkContext);
+
   const items: ItemMenu[] = [
     {
       text: "Edit Bookmark",
-      click: () => {},
+      click: () => {
+        setBookmarkData(bookmark);
+        setIsOpenFormBookmark(true);
+      },
     },
     {
       separator: true,

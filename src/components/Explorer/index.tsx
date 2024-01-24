@@ -35,11 +35,7 @@ export async function Explorer() {
             {folder.data.length > 0 ? (
               <div className="flex flex-col py-1">
                 {folder.data.map((bookmark, index) => (
-                  <Bookmark
-                    url={bookmark.url}
-                    name={bookmark.name}
-                    key={"link_key_" + index}
-                  />
+                  <Bookmark bookmark={bookmark} key={"link_key_" + index} />
                 ))}
               </div>
             ) : (

@@ -3,6 +3,7 @@ import { Button } from "../Form/Button";
 import { useState, FormEvent, useEffect, useCallback, useContext } from "react";
 import { Folder } from "@/interfaces/Folder";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
+import { Bookmark } from "@/interfaces/Bookmark";
 
 interface BookmarkFormProps {
   onSaved?: () => void;
@@ -25,7 +26,8 @@ export function BookmarkForm({
   onSaved = () => {},
   onCancel = () => {},
 }: BookmarkFormProps) {
-  const { folderKey } = useContext(BookmarkContext);
+  const { bookmarkData, setBookmarkData } = useContext(BookmarkContext);
+
   const initialFolders: Folder[] = [];
   const [folders, setFolders] = useState(initialFolders);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,14 +45,37 @@ export function BookmarkForm({
     event.preventDefault();
     setIsLoading(true);
     const data = Object.fromEntries(new FormData(event.currentTarget));
-    const { status } = await fetch(`/api/bookmark`, {
-      method: "post",
-      body: JSON.stringify(data),
-    });
+
+    const status = await save({ ...data, _id: bookmarkData._id });
+
     if (status === 200) {
       onSaved();
     }
     setIsLoading(false);
+  };
+
+  const save = async (data: Bookmark) => {
+    if (data._id) {
+      return await put(data);
+    } else {
+      return await post(data);
+    }
+  };
+
+  const post = async (data: Bookmark) => {
+    const { status } = await fetch(`/api/bookmark`, {
+      method: "post",
+      body: JSON.stringify(data),
+    });
+    return status;
+  };
+
+  const put = async (data: Bookmark) => {
+    const { status } = await fetch(`/api/bookmark/${data._id}`, {
+      method: "put",
+      body: JSON.stringify(data),
+    });
+    return status;
   };
 
   return (
@@ -68,6 +93,10 @@ export function BookmarkForm({
         <Form.Control asChild>
           <input
             type="url"
+            value={bookmarkData.url}
+            onChange={(e) =>
+              setBookmarkData({ ...bookmarkData, url: e.target.value })
+            }
             className="p-2 w-full outline-none bg-white dark:bg-neutral-900"
             autoComplete="off"
             placeholder="https://example.com"
@@ -85,6 +114,10 @@ export function BookmarkForm({
         <Form.Control asChild>
           <input
             type="text"
+            value={bookmarkData.name}
+            onChange={(e) =>
+              setBookmarkData({ ...bookmarkData, name: e.target.value })
+            }
             className="p-2 w-full outline-none bg-white dark:bg-neutral-900"
             autoComplete="off"
             required
@@ -109,7 +142,7 @@ export function BookmarkForm({
                 value={folder.key}
                 key={"folder_opt-" + i}
                 // TODO Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
-                selected={folder.key === folderKey}
+                selected={folder.key === bookmarkData.folderKey}
               >
                 {folder.name}
               </option>
