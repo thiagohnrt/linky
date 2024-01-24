@@ -13,6 +13,11 @@ export const BookmarkContext = createContext(<
     bookmarkData: Bookmark;
     setBookmarkData: Dispatch<SetStateAction<Bookmark>> | (() => void);
 
+    isOpenDeleteBookmark: boolean;
+    setIsOpenDeleteBookmark: Dispatch<SetStateAction<boolean>> | (() => void);
+    isOpenDeleteFolder: boolean;
+    setIsOpenDeleteFolder: Dispatch<SetStateAction<boolean>> | (() => void);
+
     // TODO not implemented
     bookmarks: Bookmarks[];
     setBookmarks: Dispatch<SetStateAction<Bookmarks[]>> | (() => void);
@@ -22,8 +27,15 @@ export const BookmarkContext = createContext(<
   setIsOpenFormBookmark: () => null,
   isOpenFormFolder: false,
   setIsOpenFormFolder: () => null,
+
   bookmarkData: { name: "", url: "", folderKey: "" },
   setBookmarkData: () => null,
+
+  isOpenDeleteBookmark: false,
+  setIsOpenDeleteBookmark: () => null,
+  isOpenDeleteFolder: false,
+  setIsOpenDeleteFolder: () => null,
+
   bookmarks: [],
   setBookmarks: () => null,
 });

@@ -18,6 +18,9 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
     folderKey: "",
   });
 
+  const [isOpenDeleteBookmark, setIsOpenDeleteBookmark] = useState(false);
+  const [isOpenDeleteFolder, setIsOpenDeleteFolder] = useState(false);
+
   const [bookmarks, setBookmarks] = useState(data);
   return (
     <BookmarkContext.Provider
@@ -28,6 +31,10 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
         setIsOpenFormFolder,
         bookmarkData,
         setBookmarkData,
+        isOpenDeleteBookmark,
+        setIsOpenDeleteBookmark,
+        isOpenDeleteFolder,
+        setIsOpenDeleteFolder,
         bookmarks,
         setBookmarks,
       }}

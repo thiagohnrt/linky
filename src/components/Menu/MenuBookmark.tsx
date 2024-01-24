@@ -9,7 +9,7 @@ interface MenuBookmarkProps {
 }
 
 export function MenuBookmark({ bookmark }: MenuBookmarkProps) {
-  const { setIsOpenFormBookmark, setBookmarkData } =
+  const { setIsOpenFormBookmark, setBookmarkData, setIsOpenDeleteBookmark } =
     useContext(BookmarkContext);
 
   const items: ItemMenu[] = [
@@ -26,7 +26,10 @@ export function MenuBookmark({ bookmark }: MenuBookmarkProps) {
     {
       text: "Delete Bookmark",
       className: "text-red-500",
-      click: () => {},
+      click: () => {
+        setBookmarkData(bookmark);
+        setIsOpenDeleteBookmark(true);
+      },
     },
   ];
   return (

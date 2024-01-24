@@ -7,6 +7,7 @@ import { FaBookmark, FaGithub } from "react-icons/fa";
 import { Content } from "@/components/Content";
 import { BookmarkDialog } from "@/components/Bookmark/BookmarkDialog";
 import { FolderDialog } from "@/components/Folder/FolderDialog";
+import { BookmarkDelete } from "@/components/Bookmark/BookmarkDelete";
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
         {/* @ts-expect-error Server Component */}
         <Content />
         <BookmarkDialog />
+        <BookmarkDelete />
         <FolderDialog />
       </main>
     </>
