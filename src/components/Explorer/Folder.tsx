@@ -6,11 +6,12 @@ import { ChevronDown, ChevronRight, FolderIcon } from "lucide-react";
 import { MenuFolder } from "../Menu/MenuFolder";
 
 interface FolderProps {
+  folderKey: string;
   title: string;
   children: ReactNode;
 }
 
-export function Folder({ title, children }: FolderProps) {
+export function Folder({ folderKey, title, children }: FolderProps) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Collapsible.Root open={isOpen} onOpenChange={setIsOpen}>
@@ -19,7 +20,7 @@ export function Folder({ title, children }: FolderProps) {
           {isOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
           <span className="flex-1 text-left">{title}</span>
         </Collapsible.Trigger>
-        <MenuFolder />
+        <MenuFolder folderKey={folderKey} />
       </div>
       <Collapsible.Content>{children}</Collapsible.Content>
     </Collapsible.Root>

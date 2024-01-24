@@ -105,7 +105,12 @@ export function BookmarkForm({
           >
             <option value="">Select</option>
             {folders.map((folder, i) => (
-              <option value={folder.key} key={"folder_opt-" + i}>
+              <option
+                value={folder.key}
+                key={"folder_opt-" + i}
+                // TODO Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
+                selected={folder.key === folderKey}
+              >
                 {folder.name}
               </option>
             ))}

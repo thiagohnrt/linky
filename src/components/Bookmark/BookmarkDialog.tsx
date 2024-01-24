@@ -7,13 +7,18 @@ import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { useRouter } from "next/navigation";
 
 export function BookmarkDialog() {
-  const { isOpenFormBookmark, setIsOpenFormBookmark, folderKey } =
+  const { isOpenFormBookmark, setIsOpenFormBookmark, setFolderKey } =
     useContext(BookmarkContext);
   const router = useRouter();
 
   const handleSaved = () => {
     setIsOpenFormBookmark(false);
     router.refresh();
+  };
+
+  const handleCancel = () => {
+    setIsOpenFormBookmark(false);
+    setFolderKey("");
   };
 
   return (
@@ -23,10 +28,7 @@ export function BookmarkDialog() {
       className="px-8 pt-4 pb-6 w-[600px] bg-neutral-100 dark:bg-neutral-950"
       title="Bookmark"
     >
-      <BookmarkForm
-        onSaved={handleSaved}
-        onCancel={() => setIsOpenFormBookmark(false)}
-      />
+      <BookmarkForm onSaved={handleSaved} onCancel={handleCancel} />
     </Dialog>
   );
 }

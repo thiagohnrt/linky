@@ -27,7 +27,11 @@ export async function Explorer() {
       </div>
       {folders.length > 0 ? (
         folders.map((folder, index) => (
-          <Folder title={folder.name} key={"folder_key_" + index}>
+          <Folder
+            folderKey={folder.key}
+            title={folder.name}
+            key={"folder_key_" + index}
+          >
             {folder.data.length > 0 ? (
               <div className="flex flex-col py-1">
                 {folder.data.map((bookmark, index) => (

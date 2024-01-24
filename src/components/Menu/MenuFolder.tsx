@@ -3,13 +3,18 @@ import DropdownMenu, { ItemMenu } from "../DropdownMenu";
 import { useContext } from "react";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 
-export function MenuFolder() {
-  const { setIsOpenFormBookmark } = useContext(BookmarkContext);
+interface MenuFolderProps {
+  folderKey: string;
+}
+
+export function MenuFolder({ folderKey }: MenuFolderProps) {
+  const { setIsOpenFormBookmark, setFolderKey } = useContext(BookmarkContext);
   const items: ItemMenu[] = [
     {
       text: "New Bookmark",
       keyboard: "⌘B",
       click: () => {
+        setFolderKey(folderKey);
         setIsOpenFormBookmark(true);
       },
     },
