@@ -39,7 +39,7 @@ export function FolderForm({
         <div className="flex align-baseline justify-between">
           <Form.Label>Name</Form.Label>
           <Form.Message match="valueMissing" className="text-red-600">
-            Please enter a folder
+            Please enter a folder name
           </Form.Message>
         </div>
         <Form.Control asChild>
