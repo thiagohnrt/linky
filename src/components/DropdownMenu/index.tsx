@@ -36,7 +36,9 @@ export default function DropdownMenu({ children, items }: DropdownMenuProps) {
                   "flex justify-between py-1 px-2 gap-8 outline-none cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-900 transition-colors duration-300 " +
                   item.className
                 }
-                onClick={item.click}
+                onSelect={(e) =>
+                  setTimeout(() => item.click && item.click(), 100)
+                }
               >
                 {item.text}
                 <div className="flex items-center text-sm">{item.keyboard}</div>
