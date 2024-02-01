@@ -20,8 +20,8 @@ export function FolderForm({
     event.preventDefault();
     setIsLoading(true);
 
-    const data = Object.fromEntries(new FormData(event.currentTarget));
-    const status = await save({ ...data, id: folderData.id });
+    const form = Object.fromEntries(new FormData(event.currentTarget));
+    const status = await save({ ...form, id: folderData.id } as Folder);
 
     if (status === 200) {
       onSaved();

@@ -45,8 +45,8 @@ export function BookmarkForm({
     event.preventDefault();
     setIsLoading(true);
 
-    const data = Object.fromEntries(new FormData(event.currentTarget));
-    const status = await save({ ...data, id: bookmarkData.id });
+    const form = Object.fromEntries(new FormData(event.currentTarget));
+    const status = await save({ ...form, id: bookmarkData.id } as Bookmark);
 
     if (status === 200) {
       onSaved();

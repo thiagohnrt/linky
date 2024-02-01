@@ -5,6 +5,7 @@ import Dialog from "../Dialog";
 import { useContext, useState } from "react";
 import { Button } from "../Form/Button";
 import { useRouter } from "next/navigation";
+import { Bookmark } from "@/interfaces/Bookmark";
 
 export function BookmarkDelete() {
   const router = useRouter();
@@ -33,7 +34,7 @@ export function BookmarkDelete() {
 
   const handleCancel = () => {
     setIsOpenDeleteBookmark(false);
-    setBookmarkData({});
+    setBookmarkData({} as Bookmark);
   };
 
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { BookmarkContext } from "@/contexts/bookmarkContext";
+import { Bookmark } from "@/interfaces/Bookmark";
 import { useContext } from "react";
 
 interface BookmarkActionProps {
@@ -20,7 +21,7 @@ export function BookmarkAction({
     useContext(BookmarkContext);
 
   const handleOpenFormBookmark = () => {
-    setBookmarkData({ name: "", url: "", folderId });
+    setBookmarkData({ folderId } as Bookmark);
     setIsOpenFormBookmark(true);
   };
 

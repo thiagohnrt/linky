@@ -5,6 +5,7 @@ import Dialog from "../Dialog";
 import { BookmarkForm } from "./BookmarkForm";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { useRouter } from "next/navigation";
+import { Bookmark } from "@/interfaces/Bookmark";
 
 export function BookmarkDialog() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export function BookmarkDialog() {
 
   const handleCancel = () => {
     setIsOpenFormBookmark(false);
-    setBookmarkData({ name: "", url: "", folderId: "" });
+    setBookmarkData({} as Bookmark);
   };
 
   return (

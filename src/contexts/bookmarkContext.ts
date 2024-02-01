@@ -31,9 +31,9 @@ export const BookmarkContext = createContext(<
   isOpenFormFolder: false,
   setIsOpenFormFolder: () => null,
 
-  bookmarkData: { name: "", url: "", folderId: "" },
+  bookmarkData: {} as Bookmark,
   setBookmarkData: () => null,
-  folderData: { name: "" },
+  folderData: {} as Folder,
   setFolderData: () => null,
 
   isOpenDeleteBookmark: false,

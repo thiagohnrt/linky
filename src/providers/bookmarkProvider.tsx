@@ -13,13 +13,8 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
   const [isOpenFormBookmark, setIsOpenFormBookmark] = useState(false);
   const [isOpenFormFolder, setIsOpenFormFolder] = useState(false);
 
-  const [bookmarkData, setBookmarkData] = useState<Bookmark>({
-    name: "",
-    url: "",
-    folderId: "",
-  });
-
-  const [folderData, setFolderData] = useState<Folder>({ name: "" });
+  const [bookmarkData, setBookmarkData] = useState<Bookmark>({} as Bookmark);
+  const [folderData, setFolderData] = useState<Folder>({} as Folder);
 
   const [isOpenDeleteBookmark, setIsOpenDeleteBookmark] = useState(false);
   const [isOpenDeleteFolder, setIsOpenDeleteFolder] = useState(false);

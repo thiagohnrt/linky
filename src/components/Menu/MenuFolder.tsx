@@ -3,6 +3,7 @@ import DropdownMenu, { ItemMenu } from "../DropdownMenu";
 import { useContext } from "react";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { Folder } from "@/interfaces/Folder";
+import { Bookmark } from "@/interfaces/Bookmark";
 
 interface MenuFolderProps {
   folder: Folder;
@@ -20,7 +21,7 @@ export function MenuFolder({ folder }: MenuFolderProps) {
       text: "New Bookmark",
       keyboard: "⌘B",
       click: () => {
-        setBookmarkData({ name: "", url: "", folderId: folder.id });
+        setBookmarkData({ folderId: folder.id } as Bookmark);
         setIsOpenFormBookmark(true);
       },
     },
