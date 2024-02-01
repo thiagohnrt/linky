@@ -23,5 +23,5 @@ export async function DELETE(
 ) {
   await dbConnection();
   await BookmarkModel.deleteOne({ _id: params.id });
-  return NextResponse.json({});
+  return new Response(null, { status: 204 });
 }

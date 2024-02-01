@@ -8,6 +8,7 @@ import { Content } from "@/components/Content";
 import { BookmarkDialog } from "@/components/Bookmark/BookmarkDialog";
 import { FolderDialog } from "@/components/Folder/FolderDialog";
 import { BookmarkDelete } from "@/components/Bookmark/BookmarkDelete";
+import { FolderDelete } from "@/components/Folder/FolderDelete";
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
         <BookmarkDialog />
         <BookmarkDelete />
         <FolderDialog />
+        <FolderDelete />
       </main>
     </>
   );

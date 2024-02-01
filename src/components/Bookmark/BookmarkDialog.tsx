@@ -13,11 +13,15 @@ export function BookmarkDialog() {
     useContext(BookmarkContext);
 
   const handleSaved = () => {
-    setIsOpenFormBookmark(false);
+    close();
     router.refresh();
   };
 
   const handleCancel = () => {
+    close();
+  };
+
+  const close = () => {
     setIsOpenFormBookmark(false);
     setBookmarkData({} as Bookmark);
   };

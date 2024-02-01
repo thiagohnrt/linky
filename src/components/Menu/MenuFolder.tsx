@@ -15,6 +15,7 @@ export function MenuFolder({ folder }: MenuFolderProps) {
     setIsOpenFormFolder,
     setBookmarkData,
     setFolderData,
+    setIsOpenDeleteFolder,
   } = useContext(BookmarkContext);
   const items: ItemMenu[] = [
     {
@@ -38,7 +39,10 @@ export function MenuFolder({ folder }: MenuFolderProps) {
     {
       text: "Delete Folder",
       className: "text-red-500",
-      click: () => {},
+      click: () => {
+        setFolderData(folder);
+        setIsOpenDeleteFolder(true);
+      },
     },
   ];
   return (

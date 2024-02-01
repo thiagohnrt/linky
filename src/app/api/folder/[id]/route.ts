@@ -17,7 +17,11 @@ export async function PUT(
   return NextResponse.json(response);
 }
 
-export async function DELETE(req: NextRequest) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: ParamsProps }
+) {
   await dbConnection();
-  return NextResponse.json({ message: "not implemented" });
+  await FolderModel.deleteOne({ _id: params.id });
+  return new Response(null, { status: 204 });
 }

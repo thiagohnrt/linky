@@ -5,18 +5,25 @@ import Dialog from "../Dialog";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { FolderForm } from "./FolderForm";
+import { Folder } from "@/interfaces/Folder";
 
 export function FolderDialog() {
   const router = useRouter();
-  const { isOpenFormFolder, setIsOpenFormFolder } = useContext(BookmarkContext);
+  const { isOpenFormFolder, setIsOpenFormFolder, setFolderData } =
+    useContext(BookmarkContext);
 
   const handleSaved = () => {
-    setIsOpenFormFolder(false);
+    close();
     router.refresh();
   };
 
   const handleCancel = () => {
+    close();
+  };
+
+  const close = () => {
     setIsOpenFormFolder(false);
+    setFolderData({} as Folder);
   };
 
   return (
