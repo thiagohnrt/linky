@@ -3,6 +3,7 @@ import { Bookmark } from "./Bookmark";
 import { Folder } from "./Folder";
 import { MenuExplorer } from "../Menu/MenuExplorer";
 import { BookmarkAction } from "../Bookmark/BookmarkAction";
+import { FolderAction } from "../Folder/FolderAction";
 
 async function getData(): Promise<Bookmarks[]> {
   try {
@@ -48,9 +49,7 @@ export async function Explorer() {
         <div className="p-4">
           <div className="text-sm pb-2">You have no bookmarks here yet.</div>
           <BookmarkAction className="w-full" />
-          <button className="w-full mt-2 p-1 bg-neutral-200 dark:bg-neutral-950 hover:bg-neutral-300 dark:hover:bg-neutral-900 transition-colors duration-300">
-            New Folder
-          </button>
+          <FolderAction className="w-full mt-2 p-1" />
         </div>
       )}
     </div>

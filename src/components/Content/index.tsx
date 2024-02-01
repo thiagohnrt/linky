@@ -3,6 +3,7 @@ import { Folder } from "./Folder";
 import { Bookmark } from "./Bookmark";
 import Image from "next/image";
 import { BookmarkAction } from "../Bookmark/BookmarkAction";
+import { FolderAction } from "../Folder/FolderAction";
 
 async function getData(): Promise<Bookmarks[]> {
   try {
@@ -55,9 +56,7 @@ export async function Content() {
           <p>You have no bookmarks here yet. Add your first bookmark now!</p>
           <div className="flex gap-4 mt-3">
             <BookmarkAction />
-            <button className="py-1 px-12 bg-neutral-200 dark:bg-neutral-950 hover:bg-neutral-300 dark:hover:bg-neutral-800 transition-colors duration-300">
-              New Folder
-            </button>
+            <FolderAction />
           </div>
         </div>
       )}
