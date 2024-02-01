@@ -37,11 +37,7 @@ export async function Content() {
                   <div className="text-sm pb-2">
                     You have no bookmarks here yet.
                   </div>
-                  <BookmarkAction
-                    folderId={folder.id}
-                    style="button"
-                    type="new"
-                  />
+                  <BookmarkAction folderId={folder.id} />
                 </div>
               )}
             </div>
@@ -58,7 +54,7 @@ export async function Content() {
           />
           <p>You have no bookmarks here yet. Add your first bookmark now!</p>
           <div className="flex gap-4 mt-3">
-            <BookmarkAction style="button" type="new" />
+            <BookmarkAction />
             <button className="py-1 px-12 bg-neutral-200 dark:bg-neutral-950 hover:bg-neutral-300 dark:hover:bg-neutral-800 transition-colors duration-300">
               New Folder
             </button>
