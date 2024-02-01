@@ -19,10 +19,16 @@ async function getData(): Promise<Bookmarks[]> {
 
 export async function Content() {
   const folders = await getData();
+  const hasFolders = folders.length > 0;
 
   return (
-    <div className="px-8 py-4 flex-auto overflow-auto dark:bg-neutral-900 transition-colors duration-300">
-      {folders.length > 0 ? (
+    <div
+      className={
+        (!hasFolders ? "flex items-center justify-center " : "") +
+        "px-8 py-4 flex-auto overflow-auto dark:bg-neutral-900 transition-colors duration-300"
+      }
+    >
+      {hasFolders ? (
         folders.map((folder, index) => (
           <Folder folder={folder} key={"folder_content_key_" + index}>
             <div className="grid 2xl:grid-cols-12 lg:grid-cols-6 md:grid-cols-4 gap-4 py-4">
