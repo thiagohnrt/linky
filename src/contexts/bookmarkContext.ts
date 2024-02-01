@@ -1,6 +1,7 @@
 "use client";
 
 import { Bookmark, Bookmarks } from "@/interfaces/Bookmark";
+import { Folder } from "@/interfaces/Folder";
 import { createContext, Dispatch, SetStateAction } from "react";
 
 export const BookmarkContext = createContext(<
@@ -12,6 +13,8 @@ export const BookmarkContext = createContext(<
 
     bookmarkData: Bookmark;
     setBookmarkData: Dispatch<SetStateAction<Bookmark>> | (() => void);
+    folderData: Folder;
+    setFolderData: Dispatch<SetStateAction<Folder>> | (() => void);
 
     isOpenDeleteBookmark: boolean;
     setIsOpenDeleteBookmark: Dispatch<SetStateAction<boolean>> | (() => void);
@@ -28,8 +31,10 @@ export const BookmarkContext = createContext(<
   isOpenFormFolder: false,
   setIsOpenFormFolder: () => null,
 
-  bookmarkData: { name: "", url: "", folderKey: "" },
+  bookmarkData: { name: "", url: "", folderId: "" },
   setBookmarkData: () => null,
+  folderData: { name: "" },
+  setFolderData: () => null,
 
   isOpenDeleteBookmark: false,
   setIsOpenDeleteBookmark: () => null,

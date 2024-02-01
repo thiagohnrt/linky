@@ -6,7 +6,9 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET() {
   await dbConnection();
   const folders = await FolderModel.find<Folder>({});
-  return NextResponse.json(folders);
+  return NextResponse.json(
+    folders.map<Folder>(({ id, name }) => ({ id, name }))
+  );
 }
 
 export async function POST(req: NextRequest) {
@@ -14,14 +16,4 @@ export async function POST(req: NextRequest) {
   const body: Folder = await req.json();
   const folder = await FolderModel.create(body);
   return NextResponse.json(folder);
-}
-
-export async function PUT(req: NextRequest) {
-  await dbConnection();
-  return NextResponse.json({ message: "not implemented" });
-}
-
-export async function DELETE(req: NextRequest) {
-  await dbConnection();
-  return NextResponse.json({ message: "not implemented" });
 }

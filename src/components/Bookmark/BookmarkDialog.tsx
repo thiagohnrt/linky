@@ -18,7 +18,7 @@ export function BookmarkDialog() {
 
   const handleCancel = () => {
     setIsOpenFormBookmark(false);
-    setBookmarkData({ name: "", url: "", folderKey: "" });
+    setBookmarkData({ name: "", url: "", folderId: "" });
   };
 
   return (

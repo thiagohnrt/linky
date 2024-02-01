@@ -19,7 +19,7 @@ export function BookmarkDelete() {
   const handleDelete = async () => {
     setIsLoading(true);
 
-    const { status } = await fetch(`/api/bookmark/${bookmarkData._id}`, {
+    const { status } = await fetch(`/api/bookmark/${bookmarkData.id}`, {
       method: "delete",
     });
 

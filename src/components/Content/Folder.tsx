@@ -2,18 +2,19 @@
 
 import { ReactNode } from "react";
 import { MenuFolder } from "../Menu/MenuFolder";
+import { Folder } from "@/interfaces/Folder";
 
 interface FolderProps {
-  title: string;
+  folder: Folder;
   children: ReactNode;
 }
 
-export function Folder({ title, children }: FolderProps) {
+export function Folder({ folder, children }: FolderProps) {
   return (
     <div>
       <div className="[&>.folder-more]:hover:opacity-100">
-        <span className="mr-2">{title}</span>
-        <MenuFolder />
+        <span className="mr-2">{folder.name}</span>
+        <MenuFolder folder={folder} />
       </div>
       <div>{children}</div>
     </div>

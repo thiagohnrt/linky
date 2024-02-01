@@ -2,26 +2,34 @@ import { MdOutlineMoreHoriz } from "react-icons/md";
 import DropdownMenu, { ItemMenu } from "../DropdownMenu";
 import { useContext } from "react";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
+import { Folder } from "@/interfaces/Folder";
 
 interface MenuFolderProps {
-  folderKey: string;
+  folder: Folder;
 }
 
-export function MenuFolder({ folderKey }: MenuFolderProps) {
-  const { setIsOpenFormBookmark, setBookmarkData } =
-    useContext(BookmarkContext);
+export function MenuFolder({ folder }: MenuFolderProps) {
+  const {
+    setIsOpenFormBookmark,
+    setIsOpenFormFolder,
+    setBookmarkData,
+    setFolderData,
+  } = useContext(BookmarkContext);
   const items: ItemMenu[] = [
     {
       text: "New Bookmark",
       keyboard: "⌘B",
       click: () => {
-        setBookmarkData({ name: "", url: "", folderKey });
+        setBookmarkData({ name: "", url: "", folderId: folder.id });
         setIsOpenFormBookmark(true);
       },
     },
     {
       text: "Edit Folder",
-      click: () => {},
+      click: () => {
+        setFolderData(folder);
+        setIsOpenFormFolder(true);
+      },
     },
     {
       separator: true,

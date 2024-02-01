@@ -46,7 +46,7 @@ export function BookmarkForm({
     setIsLoading(true);
 
     const data = Object.fromEntries(new FormData(event.currentTarget));
-    const status = await save({ ...data, _id: bookmarkData._id });
+    const status = await save({ ...data, id: bookmarkData.id });
 
     if (status === 200) {
       onSaved();
@@ -55,7 +55,7 @@ export function BookmarkForm({
   };
 
   const save = async (data: Bookmark) => {
-    if (data._id) {
+    if (data.id) {
       return await put(data);
     } else {
       return await post(data);
@@ -71,7 +71,7 @@ export function BookmarkForm({
   };
 
   const put = async (data: Bookmark) => {
-    const { status } = await fetch(`/api/bookmark/${data._id}`, {
+    const { status } = await fetch(`/api/bookmark/${data.id}`, {
       method: "put",
       body: JSON.stringify(data),
     });
@@ -124,7 +124,7 @@ export function BookmarkForm({
           />
         </Form.Control>
       </Form.Field>
-      <Form.Field name="folderKey" className="mt-2">
+      <Form.Field name="folderId" className="mt-2">
         <div className="flex align-baseline justify-between">
           <Form.Label>Folder</Form.Label>
           <Form.Message match="valueMissing" className="text-red-600">
@@ -139,10 +139,10 @@ export function BookmarkForm({
             <option value="">Select</option>
             {folders.map((folder, i) => (
               <option
-                value={folder.key}
+                value={folder.id}
                 key={"folder_opt-" + i}
                 // TODO Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
-                selected={folder.key === bookmarkData.folderKey}
+                selected={folder.id === bookmarkData.folderId}
               >
                 {folder.name}
               </option>

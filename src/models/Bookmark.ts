@@ -6,10 +6,11 @@ const BookmarkSchema = new Schema<Bookmark>({
   url: String,
   used: { type: Number, default: 0 },
   searched: { type: Number, default: 0 },
-  folderKey: String,
+  folderId: String,
 });
 
 const BookmarkModel =
-  mongoose.models.Bookmark || mongoose.model("Bookmark", BookmarkSchema);
+  mongoose.models.Bookmark ||
+  mongoose.model<Bookmark>("Bookmark", BookmarkSchema);
 
 export default BookmarkModel;

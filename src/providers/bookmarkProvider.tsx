@@ -3,6 +3,7 @@
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { ReactNode, useState } from "react";
 import { Bookmark, Bookmarks } from "@/interfaces/Bookmark";
+import { Folder } from "@/interfaces/Folder";
 
 interface BookmarkProviderProps {
   children: ReactNode;
@@ -15,8 +16,10 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
   const [bookmarkData, setBookmarkData] = useState<Bookmark>({
     name: "",
     url: "",
-    folderKey: "",
+    folderId: "",
   });
+
+  const [folderData, setFolderData] = useState<Folder>({ name: "" });
 
   const [isOpenDeleteBookmark, setIsOpenDeleteBookmark] = useState(false);
   const [isOpenDeleteFolder, setIsOpenDeleteFolder] = useState(false);
@@ -31,6 +34,8 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
         setIsOpenFormFolder,
         bookmarkData,
         setBookmarkData,
+        folderData,
+        setFolderData,
         isOpenDeleteBookmark,
         setIsOpenDeleteBookmark,
         isOpenDeleteFolder,

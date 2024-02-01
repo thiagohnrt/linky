@@ -23,7 +23,7 @@ export async function Content() {
     <div className="px-8 py-4 flex-auto overflow-auto dark:bg-neutral-900 transition-colors duration-300">
       {folders.length > 0 ? (
         folders.map((folder, index) => (
-          <Folder title={folder.name} key={"folder_content_key_" + index}>
+          <Folder folder={folder} key={"folder_content_key_" + index}>
             <div className="grid 2xl:grid-cols-12 lg:grid-cols-6 md:grid-cols-4 gap-4 py-4">
               {folder.data.length > 0 ? (
                 folder.data.map((bookmark, index) => (
@@ -38,7 +38,7 @@ export async function Content() {
                     You have no bookmarks here yet.
                   </div>
                   <BookmarkAction
-                    folderKey={folder.key}
+                    folderId={folder.id}
                     style="button"
                     type="new"
                   />

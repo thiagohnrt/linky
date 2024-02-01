@@ -6,7 +6,7 @@ import { useContext } from "react";
 interface BookmarkActionProps {
   style: "button";
   type: "new" | "edit";
-  folderKey?: string;
+  folderId?: string;
   className?: string;
 }
 
@@ -14,13 +14,13 @@ export function BookmarkAction({
   style,
   type,
   className = "",
-  folderKey = "",
+  folderId = "",
 }: BookmarkActionProps) {
   const { setIsOpenFormBookmark, setBookmarkData } =
     useContext(BookmarkContext);
 
   const handleOpenFormBookmark = () => {
-    setBookmarkData({ name: "", url: "", folderKey });
+    setBookmarkData({ name: "", url: "", folderId });
     setIsOpenFormBookmark(true);
   };
 
