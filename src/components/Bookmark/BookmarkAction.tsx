@@ -2,16 +2,19 @@
 
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { Bookmark } from "@/interfaces/Bookmark";
+import { PlusIcon } from "lucide-react";
 import { useContext } from "react";
 
 interface BookmarkActionProps {
   folderId?: string;
   className?: string;
+  type?: "button" | "icon";
 }
 
 export function BookmarkAction({
   className = "",
   folderId = "",
+  type = "button",
 }: BookmarkActionProps) {
   const { setIsOpenFormBookmark, setBookmarkData } =
     useContext(BookmarkContext);
@@ -23,13 +26,16 @@ export function BookmarkAction({
 
   return (
     <button
+      title="New Bookmark"
       className={
         className +
-        " py-1 px-12 bg-neutral-200 dark:bg-neutral-950 hover:bg-neutral-300 dark:hover:bg-black transition-colors duration-300"
+        (type === "button"
+          ? " py-1 px-12 bg-neutral-200 dark:bg-neutral-950"
+          : " px-2 bg-neutral-100 dark:bg-neutral-800")
       }
       onClick={handleOpenFormBookmark}
     >
-      New Bookmark
+      {type === "button" ? "New Bookmark" : <PlusIcon />}
     </button>
   );
 }

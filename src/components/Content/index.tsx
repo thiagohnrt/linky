@@ -23,12 +23,17 @@ export function Content({ folders }: ContentProps) {
           <Folder folder={folder} key={"folder_content_key_" + index}>
             <div className="grid 2xl:grid-cols-12 lg:grid-cols-6 md:grid-cols-4 gap-4 py-4">
               {folder.data.length > 0 ? (
-                folder.data.map((bookmark, index) => (
-                  <Bookmark
-                    bookmark={bookmark}
-                    key={"bookmark_content_key_" + index}
-                  />
-                ))
+                <>
+                  {folder.data.map((bookmark, index) => (
+                    <Bookmark
+                      bookmark={bookmark}
+                      key={"bookmark_content_key_" + index}
+                    />
+                  ))}
+                  <div className="flex">
+                    <BookmarkAction folderId={folder.id} type="icon" />
+                  </div>
+                </>
               ) : (
                 <div className="2xl:col-span-12 lg:col-span-6 md:col-span-4">
                   <div className="text-sm pb-2">
