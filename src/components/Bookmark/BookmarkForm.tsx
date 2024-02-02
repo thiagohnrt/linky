@@ -12,7 +12,7 @@ interface BookmarkFormProps {
 
 async function getData(): Promise<Folder[]> {
   try {
-    const response = await fetch(`http://localhost:3000/api/folder`, {
+    const response = await fetch(`/api/folder`, {
       // cache: "no-store",
     });
     return await response.json();
