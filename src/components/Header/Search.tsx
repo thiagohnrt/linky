@@ -2,11 +2,36 @@
 
 import { MdKeyboardCommandKey, MdOutlineSearch } from "react-icons/md";
 import Dialog from "../Dialog";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { Bookmark } from "@/interfaces/Bookmark";
+import { Bookmark as BookmarkLink } from "./Bookmark";
+
+async function getData(): Promise<Bookmark[]> {
+  try {
+    const response = await fetch(`/api/bookmark`, {
+      cache: "no-store",
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+  return [];
+}
 
 export default function Search() {
   const [search, setSearch] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
+
+  const fetchBookmarks = useCallback(async () => {
+    const data = await getData();
+    setBookmarks(data);
+  }, []);
+
+  useEffect(() => {
+    if (bookmarks.length === 0) fetchBookmarks();
+  }, [bookmarks, fetchBookmarks]);
+
   return (
     <>
       <div
@@ -24,7 +49,7 @@ export default function Search() {
         onClose={setIsOpen}
         className="bg-neutral-100 dark:bg-neutral-950"
       >
-        <div className="px-8 pt-4 w-[600px] h-[90vh]">
+        <div className="flex flex-col w-[600px] h-[90vh]">
           <div className="p-2 gap-2 flex items-center bg-white dark:bg-neutral-900">
             <MdOutlineSearch size={20} />
             <input
@@ -42,6 +67,33 @@ export default function Search() {
             >
               Esc
             </span>
+          </div>
+          <div className="flex-auto overflow-y-auto pt-4">
+            {bookmarks
+              .filter((bookmark) => {
+                return bookmark.name
+                  .toLocaleLowerCase()
+                  .includes(search.toLocaleLowerCase());
+              })
+              .sort((a, b) =>
+                a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
+              )
+              .sort((a, b) => {
+                const searchLowerCase = search.toLocaleLowerCase();
+                return (
+                  a.name.toLocaleLowerCase().indexOf(searchLowerCase) -
+                  b.name.toLocaleLowerCase().indexOf(searchLowerCase)
+                );
+              })
+              .map((bookmark, index) => {
+                return (
+                  <BookmarkLink
+                    bookmark={bookmark}
+                    onClick={() => setIsOpen(false)}
+                    key={"search_bookmark_" + index}
+                  />
+                );
+              })}
           </div>
         </div>
       </Dialog>
