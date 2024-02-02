@@ -30,8 +30,9 @@ export default function Search({ folders }: SearchProps) {
         open={isOpen}
         onClose={setIsOpen}
         className="bg-neutral-100 dark:bg-neutral-950"
+        position="top"
       >
-        <div className="flex flex-col w-[600px] h-[90vh]">
+        <div className="flex flex-col w-[600px] min-h-[250px] max-h-[90vh]">
           <div className="p-2 gap-2 flex items-center bg-white dark:bg-neutral-900">
             <MdOutlineSearch size={20} />
             <input
@@ -50,7 +51,7 @@ export default function Search({ folders }: SearchProps) {
               Esc
             </span>
           </div>
-          <div className="flex-auto overflow-y-auto pt-4">
+          <div className="flex-auto overflow-y-auto py-4">
             {folders
               .map((folder) => folder.data)
               .flat()

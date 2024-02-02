@@ -11,6 +11,7 @@ interface DialogProps {
   className?: string;
   children?: ReactNode;
   closeIcon?: boolean;
+  position?: "center" | "top";
 }
 
 export default function Dialog({
@@ -20,16 +21,21 @@ export default function Dialog({
   className,
   children,
   closeIcon = false,
+  position = "center",
 }: DialogProps) {
   return (
     <RD.Root open={open} onOpenChange={() => onClose(false)}>
       <RD.Portal>
         <RD.Overlay className="fixed inset-0 bg-zinc-700/50" />
         <RD.Content
-          className={
-            "fixed top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 " +
-            className
-          }
+          className={[
+            "fixed",
+            position === "center"
+              ? "top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 "
+              : "",
+            position === "top" ? "top-20 left-2/4 -translate-x-2/4 " : "",
+            className,
+          ].join(" ")}
         >
           {title ? (
             <RD.Title className="text-2xl pb-5">{title}</RD.Title>
