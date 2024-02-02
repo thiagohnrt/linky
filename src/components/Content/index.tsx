@@ -13,10 +13,11 @@ export function Content({ folders }: ContentProps) {
   const hasFolders = folders.length > 0;
   return (
     <div
-      className={
-        (!hasFolders ? "flex items-center justify-center " : "") +
-        "px-8 py-4 flex-auto overflow-auto dark:bg-neutral-900 transition-colors duration-300"
-      }
+      className={[
+        "w-[calc(100%-250px)]",
+        !hasFolders ? "flex items-center justify-center" : "",
+        "px-8 py-4 overflow-auto dark:bg-neutral-900 transition-colors duration-300",
+      ].join(" ")}
     >
       {hasFolders ? (
         folders.map((folder, index) => (
