@@ -53,7 +53,7 @@ export function BookmarkDelete() {
         bookmark.
       </p>
       <div className="flex gap-4 mt-4">
-        <Button loading={isLoading} onClick={handleDelete}>
+        <Button color="warn" loading={isLoading} onClick={handleDelete}>
           Yes, delete
         </Button>
         <Button type="button" variant="outlined" onClick={handleCancel}>

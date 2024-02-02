@@ -31,7 +31,7 @@ export function BookmarkAction({
         className +
         (type === "button"
           ? " py-1 px-12 bg-neutral-200 dark:bg-neutral-950"
-          : " px-2 bg-neutral-100 dark:bg-neutral-800")
+          : " py-1 px-2 bg-neutral-100 dark:bg-neutral-800")
       }
       onClick={handleOpenFormBookmark}
     >

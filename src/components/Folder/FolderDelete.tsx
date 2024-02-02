@@ -52,7 +52,7 @@ export function FolderDelete() {
         This action cannot be undone. This will permanently delete your folder.
       </p>
       <div className="flex gap-4 mt-4">
-        <Button loading={isLoading} onClick={handleDelete}>
+        <Button color="warn" loading={isLoading} onClick={handleDelete}>
           Yes, delete
         </Button>
         <Button type="button" variant="outlined" onClick={handleCancel}>

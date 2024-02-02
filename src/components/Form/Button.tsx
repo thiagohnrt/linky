@@ -4,6 +4,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 interface ButtonProps {
   type?: "button" | "reset" | "submit";
   variant?: "text" | "contained" | "outlined";
+  color?: "primary" | "warn";
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   loading?: boolean;
@@ -13,6 +14,7 @@ interface ButtonProps {
 export function Button({
   type = "submit",
   variant = "contained",
+  color = "primary",
   className = "",
   onClick = () => {},
   loading = false,
@@ -20,7 +22,11 @@ export function Button({
 }: ButtonProps) {
   let classNameBtn: string[] = ["relative py-2 px-12", className];
   if (variant === "contained") {
-    classNameBtn.push("bg-neutral-200 dark:bg-neutral-900");
+    if (color === "warn") {
+      classNameBtn.push("text-white bg-red-600 dark:bg-red-800");
+    } else {
+      classNameBtn.push("bg-neutral-200 dark:bg-neutral-900");
+    }
   } else if (variant === "outlined") {
     classNameBtn.push("border box-border border-neutral-400");
   }
