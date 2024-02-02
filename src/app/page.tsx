@@ -10,6 +10,7 @@ import { FolderDialog } from "@/components/Folder/FolderDialog";
 import { BookmarkDelete } from "@/components/Bookmark/BookmarkDelete";
 import { FolderDelete } from "@/components/Folder/FolderDelete";
 import { Bookmarks } from "@/interfaces/Bookmark";
+import Link from "next/link";
 
 async function getData(): Promise<Bookmarks[]> {
   try {
@@ -35,14 +36,19 @@ export default async function Home() {
         <div className="flex gap-6">
           <Search folders={bookmarks} />
           <div className="flex justify-end gap-2 items-center">
-            <Icon>
+            <Icon title="Settings">
               <Settings2Icon size={20} />
             </Icon>
             <ThemeIcon />
             <div className="w-px h-6 bg-black dark:bg-white"></div>
-            <Icon>
-              <FaGithub size={20} />
-            </Icon>
+            <Link
+              href="https://github.com/thiagohbhonorato/bookmark-manager"
+              target="_blank"
+            >
+              <Icon title="View GitHub">
+                <FaGithub size={20} />
+              </Icon>
+            </Link>
           </div>
         </div>
       </header>

@@ -24,7 +24,7 @@ export default function ThemeIcon() {
   };
 
   return (
-    <Icon onClick={handleTheme}>
+    <Icon title="Toogle theme" onClick={handleTheme}>
       {hasMounted ? (
         theme === "dark" ? (
           <SunIcon size={20} />
