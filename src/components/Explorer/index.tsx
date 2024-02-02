@@ -5,21 +5,11 @@ import { MenuExplorer } from "../Menu/MenuExplorer";
 import { BookmarkAction } from "../Bookmark/BookmarkAction";
 import { FolderAction } from "../Folder/FolderAction";
 
-async function getData(): Promise<Bookmarks[]> {
-  try {
-    const response = await fetch(`${process.env.API_URL}/api`, {
-      cache: "no-store",
-    });
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-  }
-  return [];
+interface ExplorerProps {
+  folders: Bookmarks[];
 }
 
-export async function Explorer() {
-  const folders = await getData();
-
+export function Explorer({ folders }: ExplorerProps) {
   return (
     <div className="w-[250px] overflow-auto bg-neutral-100 dark:bg-neutral-800 transition-colors duration-300">
       <div className="flex justify-between items-center py-2 pr-3 ml-6 uppercase text-sm">

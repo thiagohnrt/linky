@@ -5,22 +5,12 @@ import Image from "next/image";
 import { BookmarkAction } from "../Bookmark/BookmarkAction";
 import { FolderAction } from "../Folder/FolderAction";
 
-async function getData(): Promise<Bookmarks[]> {
-  try {
-    const response = await fetch(`${process.env.API_URL}/api`, {
-      cache: "no-store",
-    });
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-  }
-  return [];
+interface ContentProps {
+  folders: Bookmarks[];
 }
 
-export async function Content() {
-  const folders = await getData();
+export function Content({ folders }: ContentProps) {
   const hasFolders = folders.length > 0;
-
   return (
     <div
       className={

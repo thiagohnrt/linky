@@ -9,8 +9,22 @@ import { BookmarkDialog } from "@/components/Bookmark/BookmarkDialog";
 import { FolderDialog } from "@/components/Folder/FolderDialog";
 import { BookmarkDelete } from "@/components/Bookmark/BookmarkDelete";
 import { FolderDelete } from "@/components/Folder/FolderDelete";
+import { Bookmarks } from "@/interfaces/Bookmark";
 
-export default function Home() {
+async function getData(): Promise<Bookmarks[]> {
+  try {
+    const response = await fetch(`${process.env.API_URL}/api`, {
+      cache: "no-store",
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+  return [];
+}
+
+export default async function Home() {
+  const bookmarks = await getData();
   return (
     <>
       <header className="h-[55px] px-8 flex justify-between items-center bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
@@ -19,7 +33,7 @@ export default function Home() {
           <span className="pon select-none ml-2 text-xl">Bookmark Manager</span>
         </div>
         <div className="flex gap-6">
-          <Search />
+          <Search folders={bookmarks} />
           <div className="flex justify-end gap-2 items-center">
             <Icon>
               <Settings2Icon size={20} />
@@ -33,10 +47,8 @@ export default function Home() {
         </div>
       </header>
       <main className="h-[calc(100vh-55px)] flex">
-        {/* @ts-expect-error Server Component */}
-        <Explorer />
-        {/* @ts-expect-error Server Component */}
-        <Content />
+        <Explorer folders={bookmarks} />
+        <Content folders={bookmarks} />
         <BookmarkDialog />
         <BookmarkDelete />
         <FolderDialog />

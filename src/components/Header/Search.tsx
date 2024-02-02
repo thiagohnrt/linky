@@ -2,35 +2,17 @@
 
 import { MdKeyboardCommandKey, MdOutlineSearch } from "react-icons/md";
 import Dialog from "../Dialog";
-import { useCallback, useEffect, useState } from "react";
-import { Bookmark } from "@/interfaces/Bookmark";
+import { useEffect, useState } from "react";
+import { Bookmark, Bookmarks } from "@/interfaces/Bookmark";
 import { Bookmark as BookmarkLink } from "./Bookmark";
 
-async function getData(): Promise<Bookmark[]> {
-  try {
-    const response = await fetch(`/api/bookmark`, {
-      cache: "no-store",
-    });
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-  }
-  return [];
+interface SearchProps {
+  folders: Bookmarks[];
 }
 
-export default function Search() {
+export default function Search({ folders }: SearchProps) {
   const [search, setSearch] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
-
-  const fetchBookmarks = useCallback(async () => {
-    const data = await getData();
-    setBookmarks(data);
-  }, []);
-
-  useEffect(() => {
-    if (bookmarks.length === 0) fetchBookmarks();
-  }, [bookmarks, fetchBookmarks]);
 
   return (
     <>
@@ -69,7 +51,9 @@ export default function Search() {
             </span>
           </div>
           <div className="flex-auto overflow-y-auto pt-4">
-            {bookmarks
+            {folders
+              .map((folder) => folder.data)
+              .flat()
               .filter((bookmark) => {
                 return bookmark.name
                   .toLocaleLowerCase()
