@@ -16,8 +16,9 @@ export default function Search({ folders }: SearchProps) {
 
   return (
     <>
-      <div
-        className="w-64 p-2 gap-2 flex items-center cursor-pointer bg-white dark:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors duration-300"
+      <button
+        type="button"
+        className="w-64 p-2 gap-2 flex items-center text-left bg-white dark:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors duration-300"
         onClick={() => setIsOpen(true)}
       >
         <MdOutlineSearch size={20} />
@@ -25,7 +26,7 @@ export default function Search({ folders }: SearchProps) {
         <span className="flex items-center p-1 text-xs bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
           <MdKeyboardCommandKey />K
         </span>
-      </div>
+      </button>
       <Dialog
         open={isOpen}
         onClose={setIsOpen}

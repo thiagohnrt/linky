@@ -44,6 +44,7 @@ export default async function Home() {
             <Link
               href="https://github.com/thiagohbhonorato/bookmark-manager"
               target="_blank"
+              tabIndex={-1}
             >
               <Icon title="View GitHub">
                 <FaGithub size={20} />

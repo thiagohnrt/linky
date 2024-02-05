@@ -28,7 +28,7 @@ export function MenuExplorer() {
     <DropdownMenu items={items}>
       <button
         type="button"
-        className="p-2 outline-none hover:bg-neutral-200 dark:hover:bg-neutral-900 transition-colors duration-300"
+        className="p-2 hover:bg-neutral-200 dark:hover:bg-neutral-900 transition-colors duration-300"
       >
         <MdOutlineMoreHoriz size={16} />
       </button>

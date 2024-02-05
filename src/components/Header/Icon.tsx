@@ -8,12 +8,13 @@ interface IconProps {
 
 export default function Icon({ title = "", children, onClick }: IconProps) {
   return (
-    <div
+    <button
+      type="button"
       title={title}
       className="p-2 rounded-full hover:bg-white dark:hover:bg-neutral-800 transition-colors duration-300 cursor-pointer"
       onClick={onClick}
     >
       {children}
-    </div>
+    </button>
   );
 }
