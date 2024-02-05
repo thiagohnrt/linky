@@ -12,7 +12,7 @@ export default function icon() {
     (
       <div
         style={{
-          fontSize: 24,
+          fontSize: 18,
           background: "black",
           width: "100%",
           height: "100%",
@@ -23,7 +23,7 @@ export default function icon() {
           borderRadius: "50%",
         }}
       >
-        B
+        Ly
       </div>
     ),
     size

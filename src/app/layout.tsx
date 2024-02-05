@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Bookmark Manager",
+  title: "Linky | Your Bookmark Manager",
   description: "Bookmark Manager",
 };
 

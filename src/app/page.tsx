@@ -29,9 +29,16 @@ export default async function Home() {
   return (
     <>
       <header className="h-[55px] px-8 flex justify-between items-center bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
-        <div className="flex items-center">
+        <div className="flex gap-2 items-center">
           <FaBookmark size={20} />
-          <span className="pon select-none ml-2 text-xl">Bookmark Manager</span>
+          <div className="select-none ml-2 flex items-center gap-4">
+            <span className="text-3xl">Linky</span>
+            <span className="text-xs">
+              Your
+              <br />
+              Bookmark Manager
+            </span>
+          </div>
         </div>
         <div className="flex gap-6">
           <Search folders={bookmarks} />
