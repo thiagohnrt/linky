@@ -31,12 +31,11 @@ export default async function Home() {
       <header className="h-[55px] px-8 flex justify-between items-center bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
         <div className="flex gap-2 items-center">
           <FaBookmark size={20} />
-          <div className="select-none ml-2 flex items-center gap-4">
+          <div className="select-none ml-2 flex">
             <span className="text-3xl">Linky</span>
-            <span className="text-xs">
-              Your
-              <br />
-              Bookmark Manager
+            <span className="text-2xl self-end">.io</span>
+            <span className="text-xs ml-4 self-center">
+              Your <br /> Bookmark Manager
             </span>
           </div>
         </div>
