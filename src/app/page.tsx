@@ -11,6 +11,7 @@ import { BookmarkDelete } from "@/components/Bookmark/BookmarkDelete";
 import { FolderDelete } from "@/components/Folder/FolderDelete";
 import { Bookmarks } from "@/interfaces/Bookmark";
 import Link from "next/link";
+import { BookmarkClipboard } from "@/components/Bookmark/BookmarkClipboard";
 
 async function getData(): Promise<Bookmarks[]> {
   try {
@@ -64,6 +65,7 @@ export default async function Home() {
         <Content folders={bookmarks} />
         <BookmarkDialog />
         <BookmarkDelete />
+        <BookmarkClipboard />
         <FolderDialog />
         <FolderDelete />
       </main>

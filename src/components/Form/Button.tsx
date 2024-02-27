@@ -8,6 +8,7 @@ interface ButtonProps {
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   loading?: boolean;
+  title?: string;
   children?: ReactNode;
 }
 
@@ -18,6 +19,7 @@ export function Button({
   className = "",
   onClick = () => {},
   loading = false,
+  title = "",
   children,
 }: ButtonProps) {
   let classNameBtn: string[] = ["relative py-2 px-12", className];
@@ -31,7 +33,12 @@ export function Button({
     classNameBtn.push("border box-border border-neutral-400");
   }
   return (
-    <button type={type} className={classNameBtn.join(" ")} onClick={onClick}>
+    <button
+      type={type}
+      className={classNameBtn.join(" ")}
+      onClick={onClick}
+      title={title}
+    >
       <div className={loading ? "invisible" : ""}>{children}</div>
       {loading ? (
         <AiOutlineLoading3Quarters
