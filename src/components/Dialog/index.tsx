@@ -1,6 +1,12 @@
 "use client";
 
-import { Dispatch, ReactNode, SetStateAction, useCallback } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useCallback,
+  useEffect,
+} from "react";
 import * as RD from "@radix-ui/react-dialog";
 import { MdClose } from "react-icons/md";
 
@@ -37,6 +43,12 @@ export default function Dialog({
         return "";
     }
   }, []);
+
+  useEffect(() => {
+    if (open && !backdrop) {
+      document.body.style.pointerEvents = "";
+    }
+  });
 
   return (
     <RD.Root open={open} onOpenChange={() => onClose(false)}>
