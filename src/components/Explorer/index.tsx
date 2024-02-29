@@ -4,14 +4,14 @@ import { Folder } from "./Folder";
 import { MenuExplorer } from "../Menu/MenuExplorer";
 import { BookmarkAction } from "../Bookmark/BookmarkAction";
 import { FolderAction } from "../Folder/FolderAction";
+import * as dataService from "@/services/dataService";
+import { resolve } from "path";
 
-interface ExplorerProps {
-  folders: Bookmarks[];
-}
-
-export function Explorer({ folders }: ExplorerProps) {
+export async function Explorer() {
+  const folders = await dataService.getData();
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   return (
-    <div className="w-[250px] overflow-auto bg-neutral-100 dark:bg-neutral-800 transition-colors duration-300">
+    <>
       <div className="flex justify-between items-center py-2 pr-3 ml-6 uppercase text-sm">
         Explorer
         <MenuExplorer />
@@ -42,6 +42,6 @@ export function Explorer({ folders }: ExplorerProps) {
           <FolderAction className="w-full mt-2 p-1" />
         </div>
       )}
-    </div>
+    </>
   );
 }

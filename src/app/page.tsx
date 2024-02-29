@@ -9,24 +9,13 @@ import { BookmarkDialog } from "@/components/Bookmark/BookmarkDialog";
 import { FolderDialog } from "@/components/Folder/FolderDialog";
 import { BookmarkDelete } from "@/components/Bookmark/BookmarkDelete";
 import { FolderDelete } from "@/components/Folder/FolderDelete";
-import { Bookmarks } from "@/interfaces/Bookmark";
 import Link from "next/link";
 import { BookmarkClipboard } from "@/components/Bookmark/BookmarkClipboard";
+import { Suspense } from "react";
+import LoadingExplorer from "@/components/Explorer/Loading";
+import LoadingContent from "@/components/Content/Loading";
 
-async function getData(): Promise<Bookmarks[]> {
-  try {
-    const response = await fetch(`${process.env.API_URL}/api`, {
-      cache: "no-store",
-    });
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-  }
-  return [];
-}
-
-export default async function Home() {
-  const bookmarks = await getData();
+export default function Home() {
   return (
     <>
       <header className="h-[55px] px-8 flex justify-between items-center bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
@@ -41,7 +30,14 @@ export default async function Home() {
           </div>
         </div>
         <div className="flex gap-6">
-          <Search folders={bookmarks} />
+          <div className="w-64 bg-white dark:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors duration-300">
+            <Suspense
+              fallback={<div className="skeleton h-full">Loading...</div>}
+            >
+              {/* @ts-expect-error Server Component */}
+              <Search />
+            </Suspense>
+          </div>
           <div className="flex justify-end gap-2 items-center">
             <Icon title="Settings">
               <Settings2Icon size={20} />
@@ -61,8 +57,18 @@ export default async function Home() {
         </div>
       </header>
       <main className="h-[calc(100vh-55px)] flex">
-        <Explorer folders={bookmarks} />
-        <Content folders={bookmarks} />
+        <div className="w-[250px] overflow-auto bg-neutral-100 dark:bg-neutral-800 transition-colors duration-300">
+          <Suspense fallback={<LoadingExplorer />}>
+            {/* @ts-expect-error Server Component */}
+            <Explorer />
+          </Suspense>
+        </div>
+        <div className="w-[calc(100%-250px)] px-8 py-4 overflow-auto dark:bg-neutral-900 transition-colors duration-300">
+          <Suspense fallback={<LoadingContent />}>
+            {/* @ts-expect-error Server Component */}
+            <Content />
+          </Suspense>
+        </div>
         <BookmarkDialog />
         <BookmarkDelete />
         <BookmarkClipboard />
