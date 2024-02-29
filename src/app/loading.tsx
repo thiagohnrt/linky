@@ -3,15 +3,20 @@ import Search from "@/components/Header/Search";
 import ThemeIcon from "@/components/Header/ThemeIcon";
 import { Settings2Icon } from "lucide-react";
 import Link from "next/link";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { FaBookmark, FaGithub } from "react-icons/fa";
 
 export default function Loading() {
   const repeat = (count: number, reactNode: ReactNode) => {
+    const elementKey = React.Children.map(reactNode, (child, index) => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child, { key: index });
+      }
+    });
     return ","
       .repeat(count - 1)
       .split(",")
-      .map(() => reactNode);
+      .map(() => elementKey);
   };
 
   return (
