@@ -63,7 +63,7 @@ export default function Home() {
             <Explorer />
           </Suspense>
         </div>
-        <div className="w-[calc(100%-250px)] px-8 py-4 overflow-auto dark:bg-neutral-900 transition-colors duration-300">
+        <div className="w-[calc(100%-250px)] flex flex-col px-8 py-4 overflow-auto dark:bg-neutral-900 transition-colors duration-300">
           <Suspense fallback={<LoadingContent />}>
             {/* @ts-expect-error Server Component */}
             <Content />

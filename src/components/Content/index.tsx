@@ -8,10 +8,9 @@ import * as dataService from "@/services/dataService";
 
 export async function Content() {
   const folders = await dataService.getData();
-  await new Promise((resolve) => setTimeout(resolve, 2000));
   const hasFolders = folders.length > 0;
   return (
-    <div className={!hasFolders ? "flex items-center justify-center" : ""}>
+    <>
       {hasFolders ? (
         folders.map((folder, index) => (
           <Folder folder={folder} key={"folder_content_key_" + index}>
@@ -40,21 +39,23 @@ export async function Content() {
           </Folder>
         ))
       ) : (
-        <div className="flex flex-col items-center">
-          <Image
-            src="/empty.png"
-            alt="Empty illustration"
-            width={150}
-            height={200}
-            className="my-5"
-          />
-          <p>You have no bookmarks here yet. Add your first bookmark now!</p>
-          <div className="flex gap-4 mt-3">
-            <BookmarkAction />
-            <FolderAction />
+        <div className="flex flex-auto justify-center items-center">
+          <div className="flex flex-col items-center">
+            <Image
+              src="/empty.png"
+              alt="Empty illustration"
+              width={150}
+              height={200}
+              className="my-5"
+            />
+            <p>You have no bookmarks here yet. Add your first bookmark now!</p>
+            <div className="flex gap-4 mt-3">
+              <BookmarkAction />
+              <FolderAction />
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
