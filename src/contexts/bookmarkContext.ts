@@ -21,6 +21,9 @@ export const BookmarkContext = createContext(<
     isOpenDeleteFolder: boolean;
     setIsOpenDeleteFolder: Dispatch<SetStateAction<boolean>> | (() => void);
 
+    isOpenSearch: boolean;
+    setIsOpenSearch: Dispatch<SetStateAction<boolean>> | (() => void);
+
     // TODO not implemented
     bookmarks: Bookmarks[];
     setBookmarks: Dispatch<SetStateAction<Bookmarks[]>> | (() => void);
@@ -40,6 +43,9 @@ export const BookmarkContext = createContext(<
   setIsOpenDeleteBookmark: () => null,
   isOpenDeleteFolder: false,
   setIsOpenDeleteFolder: () => null,
+
+  isOpenSearch: false,
+  setIsOpenSearch: () => null,
 
   bookmarks: [],
   setBookmarks: () => null,

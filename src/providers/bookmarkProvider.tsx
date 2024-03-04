@@ -8,8 +8,8 @@ import { Folder } from "@/interfaces/Folder";
 interface BookmarkProviderProps {
   children: ReactNode;
 }
+
 export function BookmarkProvider({ children }: BookmarkProviderProps) {
-  const data: Bookmarks[] = [];
   const [isOpenFormBookmark, setIsOpenFormBookmark] = useState(false);
   const [isOpenFormFolder, setIsOpenFormFolder] = useState(false);
 
@@ -19,7 +19,11 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
   const [isOpenDeleteBookmark, setIsOpenDeleteBookmark] = useState(false);
   const [isOpenDeleteFolder, setIsOpenDeleteFolder] = useState(false);
 
+  const [isOpenSearch, setIsOpenSearch] = useState(false);
+
+  const data: Bookmarks[] = [];
   const [bookmarks, setBookmarks] = useState(data);
+
   return (
     <BookmarkContext.Provider
       value={{
@@ -35,6 +39,8 @@ export function BookmarkProvider({ children }: BookmarkProviderProps) {
         setIsOpenDeleteBookmark,
         isOpenDeleteFolder,
         setIsOpenDeleteFolder,
+        isOpenSearch,
+        setIsOpenSearch,
         bookmarks,
         setBookmarks,
       }}
