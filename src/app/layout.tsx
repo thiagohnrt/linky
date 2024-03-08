@@ -51,7 +51,7 @@ export default function RootLayout({
                 <ThemeIcon />
                 <div className="w-px h-6 bg-black dark:bg-white"></div>
                 <Link
-                  href="https://github.com/thiagohbhonorato/bookmark-manager"
+                  href="https://github.com/thiagohbhonorato/linky"
                   target="_blank"
                   tabIndex={-1}
                 >
