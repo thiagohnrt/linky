@@ -16,6 +16,8 @@ import LoadingExplorer from "@/components/Explorer/Loading";
 import LoadingContent from "@/components/Content/Loading";
 import SearchDialog from "@/components/Header/SearchDialog";
 
+export const runtime = "edge";
+
 export default function Home() {
   return (
     <>
