@@ -1,14 +1,16 @@
 import { MouseEventHandler, ReactNode } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import "./button.css";
 
 interface ButtonProps {
   type?: "button" | "reset" | "submit";
-  variant?: "text" | "contained" | "outlined";
-  color?: "primary" | "warn";
+  variant?: "contained" | "outlined";
+  color?: "primary" | "secondary" | "success" | "danger" | "warning" | "info";
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   loading?: boolean;
   title?: string;
+  disabled?: boolean;
   children?: ReactNode;
 }
 
@@ -20,24 +22,16 @@ export function Button({
   onClick = () => {},
   loading = false,
   title = "",
+  disabled = false,
   children,
 }: ButtonProps) {
-  let classNameBtn: string[] = ["relative py-2 px-12", className];
-  if (variant === "contained") {
-    if (color === "warn") {
-      classNameBtn.push("text-white bg-red-600 dark:bg-red-800");
-    } else {
-      classNameBtn.push("bg-neutral-200 dark:bg-neutral-900");
-    }
-  } else if (variant === "outlined") {
-    classNameBtn.push("border box-border border-neutral-400");
-  }
   return (
     <button
       type={type}
-      className={classNameBtn.join(" ")}
+      className={[variant, color, className].join(" ")}
       onClick={onClick}
       title={title}
+      disabled={disabled}
     >
       <div className={loading ? "invisible" : ""}>{children}</div>
       {loading ? (
