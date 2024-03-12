@@ -1,20 +1,14 @@
-import Icon from "@/components/Header/Icon";
-import Search from "@/components/Header/Search";
-import ThemeIcon from "@/components/Header/ThemeIcon";
-import { Explorer } from "@/components/Explorer";
-import { Settings2Icon } from "lucide-react";
-import { FaBookmark, FaGithub } from "react-icons/fa";
-import { Content } from "@/components/Content";
-import { BookmarkDialog } from "@/components/Bookmark/BookmarkDialog";
-import { FolderDialog } from "@/components/Folder/FolderDialog";
-import { BookmarkDelete } from "@/components/Bookmark/BookmarkDelete";
-import { FolderDelete } from "@/components/Folder/FolderDelete";
-import Link from "next/link";
 import { BookmarkClipboard } from "@/components/Bookmark/BookmarkClipboard";
-import { Suspense } from "react";
-import LoadingExplorer from "@/components/Explorer/Loading";
+import { BookmarkDelete } from "@/components/Bookmark/BookmarkDelete";
+import { BookmarkDialog } from "@/components/Bookmark/BookmarkDialog";
+import { Content } from "@/components/Content";
 import LoadingContent from "@/components/Content/Loading";
+import { Explorer } from "@/components/Explorer";
+import LoadingExplorer from "@/components/Explorer/Loading";
+import { FolderDelete } from "@/components/Folder/FolderDelete";
+import { FolderDialog } from "@/components/Folder/FolderDialog";
 import SearchDialog from "@/components/Header/SearchDialog";
+import { Suspense } from "react";
 
 export const runtime = "edge";
 
