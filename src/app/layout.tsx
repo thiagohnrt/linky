@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         <Providers>
           <header className="h-[55px] px-8 flex justify-between items-center bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
-            <div className="flex gap-2 items-center">
+            <Link href="/" className="flex gap-2 items-center">
               <FaBookmark size={20} />
               <div className="select-none ml-2 flex">
                 <span className="text-3xl">Linky</span>
@@ -39,7 +39,7 @@ export default function RootLayout({
                   Your <br /> Bookmark Manager
                 </span>
               </div>
-            </div>
+            </Link>
             <div className="flex gap-6">
               <div className="w-64 bg-white dark:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors duration-300">
                 <Search />
