@@ -1,6 +1,6 @@
 "use client";
 
-import { ImportIcon, SettingsIcon } from "lucide-react";
+import { SettingsIcon, UploadIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
@@ -8,12 +8,16 @@ import { ReactNode } from "react";
 export function Menubar() {
   return (
     <div>
-      <ItemMenu href="/settings" text="General" icon={<SettingsIcon />} />
+      <ItemMenu
+        href="/settings"
+        text="General"
+        icon={<SettingsIcon size={18} />}
+      />
       <Separator label="Advanced" />
       <ItemMenu
         href="/settings/import"
         text="Import Bookmark"
-        icon={<ImportIcon />}
+        icon={<UploadIcon size={18} />}
       />
     </div>
   );
@@ -42,11 +46,11 @@ function ItemMenu({
       <Link
         href={href}
         className={[
-          "flex gap-3 flex-auto px-4 py-2 rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors duration-300",
+          "flex items-center gap-3 flex-auto px-4 py-2 rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors duration-300",
           active ? "bg-neutral-200 dark:bg-neutral-700" : "",
         ].join(" ")}
       >
-        {icon}
+        <span className="opacity-75">{icon}</span>
         {text}
       </Link>
     </div>
