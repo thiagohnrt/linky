@@ -4,7 +4,7 @@ import "./button.css";
 
 interface ButtonProps {
   type?: "button" | "reset" | "submit";
-  variant?: "contained" | "outlined";
+  variant?: "contained" | "outlined" | "reversed";
   color?: "primary" | "secondary" | "success" | "danger" | "warning" | "info";
   className?: string;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;

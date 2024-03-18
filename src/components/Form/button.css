@@ -5,7 +5,7 @@
   --primary: white;
   --secondary: gray;
   --success: green;
-  --danger: red;
+  --danger: #bb2d2d;
   --warning: yellow;
   --info: lightblue;
 }
@@ -13,33 +13,44 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+.button-component.contained {
+  /*  */
+}
 .button-component.outlined {
   border-width: 1px;
   border-style: solid;
   box-sizing: border-box;
 }
-.button-component.primary {
+.button-component.reversed {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #444;
+  box-sizing: border-box;
+  background-color: #222;
+  font-weight: 600;
+}
+.button-component.contained.primary {
   background-color: var(--primary);
   border-color: var(--primary);
   color: black;
 }
-.button-component.secondary {
+.button-component.contained.secondary {
   background-color: var(--secondary);
   border-color: var(--secondary);
 }
-.button-component.success {
+.button-component.contained.success {
   background-color: var(--success);
   border-color: var(--success);
 }
-.button-component.danger {
+.button-component.contained.danger {
   background-color: var(--danger);
   border-color: var(--danger);
 }
-.button-component.warning {
+.button-component.contained.warning {
   background-color: var(--warning);
   border-color: var(--warning);
 }
-.button-component.info {
+.button-component.contained.info {
   background-color: var(--info);
   border-color: var(--info);
 }
@@ -71,5 +82,23 @@
 .button-component.outlined.info {
   background-color: transparent;
   border-color: var(--info);
+  color: var(--info);
+}
+.button-component.reversed.primary {
+  color: var(--primary);
+}
+.button-component.reversed.secondary {
+  color: var(--secondary);
+}
+.button-component.reversed.success {
+  color: var(--success);
+}
+.button-component.reversed.danger {
+  color: var(--danger);
+}
+.button-component.reversed.warning {
+  color: var(--warning);
+}
+.button-component.reversed.info {
   color: var(--info);
 }
