@@ -1,4 +1,4 @@
-button {
+.button-component {
   position: relative;
   padding: 0.5rem 3rem;
   color: #fff;
@@ -9,66 +9,66 @@ button {
   --warning: yellow;
   --info: lightblue;
 }
-button:disabled {
+.button-component:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-button.outlined {
+.button-component.outlined {
   border-width: 1px;
   border-style: solid;
   box-sizing: border-box;
 }
-button.primary {
+.button-component.primary {
   background-color: var(--primary);
   border-color: var(--primary);
   color: black;
 }
-button.secondary {
+.button-component.secondary {
   background-color: var(--secondary);
   border-color: var(--secondary);
 }
-button.success {
+.button-component.success {
   background-color: var(--success);
   border-color: var(--success);
 }
-button.danger {
+.button-component.danger {
   background-color: var(--danger);
   border-color: var(--danger);
 }
-button.warning {
+.button-component.warning {
   background-color: var(--warning);
   border-color: var(--warning);
 }
-button.info {
+.button-component.info {
   background-color: var(--info);
   border-color: var(--info);
 }
-button.outlined.primary {
+.button-component.outlined.primary {
   background-color: transparent;
   border-color: var(--primary);
   color: var(--primary);
 }
-button.outlined.secondary {
+.button-component.outlined.secondary {
   background-color: transparent;
   border-color: var(--secondary);
   color: var(--secondary);
 }
-button.outlined.success {
+.button-component.outlined.success {
   background-color: transparent;
   border-color: var(--success);
   color: var(--success);
 }
-button.outlined.danger {
+.button-component.outlined.danger {
   background-color: transparent;
   border-color: var(--danger);
   color: var(--danger);
 }
-button.outlined.warning {
+.button-component.outlined.warning {
   background-color: transparent;
   border-color: var(--warning);
   color: var(--warning);
 }
-button.outlined.info {
+.button-component.outlined.info {
   background-color: transparent;
   border-color: var(--info);
   color: var(--info);

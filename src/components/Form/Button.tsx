@@ -28,7 +28,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={[variant, color, className].join(" ")}
+      className={["button-component", variant, color, className].join(" ")}
       onClick={onClick}
       title={title}
       disabled={disabled}
