@@ -7,6 +7,7 @@ import Icon from "@/components/Header/Icon";
 import { Settings2Icon } from "lucide-react";
 import ThemeIcon from "@/components/Header/ThemeIcon";
 import Link from "next/link";
+import Home from "./page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,9 +46,11 @@ export default function RootLayout({
                 <Search />
               </div>
               <div className="flex justify-end gap-2 items-center">
-                <Icon title="Settings">
-                  <Settings2Icon size={20} />
-                </Icon>
+                <Link href="/settings">
+                  <Icon title="Settings">
+                    <Settings2Icon size={20} />
+                  </Icon>
+                </Link>
                 <ThemeIcon />
                 <div className="w-px h-6 bg-black dark:bg-white"></div>
                 <Link
