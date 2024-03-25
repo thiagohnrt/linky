@@ -3,9 +3,9 @@
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import Dialog from "../Dialog";
 import { useContext, useState } from "react";
-import { Button } from "../Form/Button";
 import { useRouter } from "next/navigation";
 import { Bookmark } from "@/interfaces/Bookmark";
+import { Button } from "../ui/button";
 
 export function BookmarkDelete() {
   const router = useRouter();
@@ -53,10 +53,14 @@ export function BookmarkDelete() {
         bookmark.
       </p>
       <div className="flex gap-4 mt-4">
-        <Button color="danger" loading={isLoading} onClick={handleDelete}>
+        <Button
+          variant="destructive"
+          disabled={isLoading}
+          onClick={handleDelete}
+        >
           Yes, delete
         </Button>
-        <Button type="button" variant="outlined" onClick={handleCancel}>
+        <Button type="button" variant="outline" onClick={handleCancel}>
           Cancel
         </Button>
       </div>

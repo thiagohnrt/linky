@@ -2,10 +2,10 @@
 
 import { useCallback, useContext, useEffect, useState } from "react";
 import Dialog from "../Dialog";
-import { Button } from "../Form/Button";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { Bookmark } from "@/interfaces/Bookmark";
 import { ProgressBar } from "../ProgressBar";
+import { Button } from "../ui/button";
 
 export function BookmarkClipboard() {
   const { setIsOpenFormBookmark, setBookmarkData, bookmarks } =

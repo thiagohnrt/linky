@@ -1,7 +1,7 @@
 "use client";
 
 import Dialog from "@/components/Dialog";
-import { Button } from "@/components/Form/Button";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export function DeleteAllBookmarks() {
@@ -35,7 +35,7 @@ export function DeleteAllBookmarks() {
   };
 
   return (
-    <div className="flex justify-between p-4">
+    <div className="flex justify-between items-center p-4">
       <div>
         <h3 className="font-semibold">Delete all bookmarks</h3>
         <span style={{ fontSize: ".9em" }}>
@@ -43,7 +43,7 @@ export function DeleteAllBookmarks() {
           certain.
         </span>
       </div>
-      <Button color="danger" variant="reversed" onClick={() => setOpen(true)}>
+      <Button variant="destructive" onClick={() => setOpen(true)}>
         Delete all bookmarks
       </Button>
       <Dialog
@@ -57,12 +57,16 @@ export function DeleteAllBookmarks() {
           bookmarks.
         </p>
         <div className="flex gap-4 mt-4">
-          <Button color="danger" loading={isLoading} onClick={handleDelete}>
+          <Button
+            variant="destructive"
+            disabled={isLoading}
+            onClick={handleDelete}
+          >
             Yes, delete
           </Button>
           <Button
             type="button"
-            variant="outlined"
+            variant="outline"
             disabled={isLoading}
             onClick={handleCancel}
           >

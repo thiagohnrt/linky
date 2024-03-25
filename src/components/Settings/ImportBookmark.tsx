@@ -1,8 +1,8 @@
 "use client";
 
 import { ChangeEvent, ReactNode, useState } from "react";
-import { Button } from "../Form/Button";
 import { UploadIcon } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface ImportBookmarkProps {
   title: string;
@@ -45,17 +45,10 @@ export function ImportBookmark({
         <UploadIcon size={18} className="mr-2" /> Import your bookmarks.
       </p>
       <Button
-        color={
-          status === "success"
-            ? "success"
-            : status === "error"
-            ? "danger"
-            : "primary"
-        }
+        variant={status === "error" ? "destructive" : "default"}
         className="rounded-md "
         onClick={onImport}
-        disabled={!file}
-        loading={status === "loading"}
+        disabled={!file || status === "loading"}
       >
         {status === "success"
           ? "Success"

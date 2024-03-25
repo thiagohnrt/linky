@@ -1,4 +1,3 @@
-import { Button } from "@/components/Form/Button";
 import { DeleteAllBookmarks } from "@/components/Settings/General/DangerZone/DeleteAllBookmarks";
 import { SettingsPage } from "@/components/Settings/SettingsPage";
 import { SettingsSection } from "@/components/Settings/SettingsSection";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/Form/Button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Error({
@@ -19,9 +19,7 @@ export default function Error({
             There was a problem loading the data. You can try to reload the page
             or try again later.
           </div>
-          <Button variant="outlined" onClick={() => reset()}>
-            Try again
-          </Button>
+          <Button onClick={() => reset()}>Try again</Button>
         </div>
         <div className="">
           <Image

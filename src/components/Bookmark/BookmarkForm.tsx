@@ -1,9 +1,9 @@
 import * as Form from "@radix-ui/react-form";
-import { Button } from "../Form/Button";
 import { useState, FormEvent, useEffect, useCallback, useContext } from "react";
 import { Folder } from "@/interfaces/Folder";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { Bookmark } from "@/interfaces/Bookmark";
+import { Button } from "../ui/button";
 
 interface BookmarkFormProps {
   onSaved?: () => void;
@@ -152,9 +152,9 @@ export function BookmarkForm({
       </Form.Field>
       <div className="flex justify-between mt-4">
         <Form.Submit asChild>
-          <Button loading={isLoading}>Save</Button>
+          <Button disabled={isLoading}>Save</Button>
         </Form.Submit>
-        <Button type="button" variant="outlined" onClick={onCancel}>
+        <Button type="button" variant="outline" onClick={onCancel}>
           Cancel
         </Button>
       </div>

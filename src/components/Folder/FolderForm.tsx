@@ -1,8 +1,8 @@
 import * as Form from "@radix-ui/react-form";
 import { FormEvent, useContext, useState } from "react";
-import { Button } from "../Form/Button";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { Folder } from "@/interfaces/Folder";
+import { Button } from "../ui/button";
 
 interface FolderFormProps {
   onSaved?: () => void;
@@ -77,9 +77,9 @@ export function FolderForm({
       </Form.Field>
       <div className="flex justify-between mt-4">
         <Form.Submit asChild>
-          <Button loading={isLoading}>Save</Button>
+          <Button disabled={isLoading}>Save</Button>
         </Form.Submit>
-        <Button type="button" variant="outlined" onClick={onCancel}>
+        <Button type="button" variant="outline" onClick={onCancel}>
           Cancel
         </Button>
       </div>
