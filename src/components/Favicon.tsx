@@ -19,7 +19,7 @@ export default function Favicon({
   const onErrorFavicon = () => {
     setIsErrorFavicon(true);
   };
-  const onLoadingCompleteFavicon = () => {
+  const onLoadFavicon = () => {
     setIsErrorFavicon(false);
   };
   return (
@@ -33,7 +33,7 @@ export default function Favicon({
           width={size}
           height={size}
           className={className}
-          onLoadingComplete={onLoadingCompleteFavicon}
+          onLoad={onLoadFavicon}
           onError={onErrorFavicon}
         />
       )}
