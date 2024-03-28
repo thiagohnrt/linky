@@ -1,11 +1,11 @@
 "use client";
 
 import { useContext } from "react";
-import Dialog from "../Dialog";
 import { BookmarkForm } from "./BookmarkForm";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { useRouter } from "next/navigation";
 import { Bookmark } from "@/interfaces/Bookmark";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 
 export function BookmarkDialog() {
   const router = useRouter();
@@ -29,11 +29,14 @@ export function BookmarkDialog() {
   return (
     <Dialog
       open={isOpenFormBookmark}
-      onClose={setIsOpenFormBookmark}
-      className="px-8 pt-4 pb-6 w-[600px] bg-neutral-100 dark:bg-neutral-950"
-      title="Bookmark"
+      onOpenChange={(open) => setIsOpenFormBookmark(open)}
     >
-      <BookmarkForm onSaved={handleSaved} onCancel={handleCancel} />
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Bookmark</DialogTitle>
+        </DialogHeader>
+        <BookmarkForm onSaved={handleSaved} onCancel={handleCancel} />
+      </DialogContent>
     </Dialog>
   );
 }

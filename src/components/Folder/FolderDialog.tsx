@@ -1,11 +1,11 @@
 "use client";
 
 import { BookmarkContext } from "@/contexts/bookmarkContext";
-import Dialog from "../Dialog";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { FolderForm } from "./FolderForm";
 import { Folder } from "@/interfaces/Folder";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 
 export function FolderDialog() {
   const router = useRouter();
@@ -27,13 +27,13 @@ export function FolderDialog() {
   };
 
   return (
-    <Dialog
-      open={isOpenFormFolder}
-      onClose={setIsOpenFormFolder}
-      className="px-8 pt-4 pb-6 w-[600px] bg-neutral-100 dark:bg-neutral-950"
-      title="Folder"
-    >
-      <FolderForm onSaved={handleSaved} onCancel={handleCancel} />
+    <Dialog open={isOpenFormFolder} onOpenChange={setIsOpenFormFolder}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Folder</DialogTitle>
+        </DialogHeader>
+        <FolderForm onSaved={handleSaved} onCancel={handleCancel} />
+      </DialogContent>
     </Dialog>
   );
 }

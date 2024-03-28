@@ -1,11 +1,20 @@
 "use client";
 
 import { BookmarkContext } from "@/contexts/bookmarkContext";
-import Dialog from "../Dialog";
 import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Folder } from "@/interfaces/Folder";
 import { Button } from "../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
+import { ReloadIcon } from "@radix-ui/react-icons";
+import { cn } from "@/lib/utils";
 
 export function FolderDelete() {
   const router = useRouter();
@@ -42,27 +51,39 @@ export function FolderDelete() {
   };
 
   return (
-    <Dialog
-      open={isOpenDeleteFolder}
-      onClose={setIsOpenDeleteFolder}
-      className="px-8 pt-4 pb-6 w-[450px] bg-neutral-100 dark:bg-neutral-950"
-      title="Are you sure?"
-    >
-      <p>
-        This action cannot be undone. This will permanently delete your folder.
-      </p>
-      <div className="flex gap-4 mt-4">
-        <Button
-          variant="destructive"
-          disabled={isLoading}
-          onClick={handleDelete}
-        >
-          Yes, delete
-        </Button>
-        <Button type="button" variant="outline" onClick={handleCancel}>
-          Cancel
-        </Button>
-      </div>
+    <Dialog open={isOpenDeleteFolder} onOpenChange={setIsOpenDeleteFolder}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you sure?</DialogTitle>
+          <DialogDescription>
+            This action cannot be undone. This will permanently delete your
+            folder.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button
+            variant="destructive"
+            disabled={isLoading}
+            onClick={handleDelete}
+          >
+            <ReloadIcon
+              className={cn(
+                "mr-2 h-4 w-4 animate-spin",
+                isLoading ? "" : "hidden"
+              )}
+            />
+            Yes, delete
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleCancel}
+            disabled={isLoading}
+          >
+            Cancel
+          </Button>
+        </DialogFooter>
+      </DialogContent>
     </Dialog>
   );
 }

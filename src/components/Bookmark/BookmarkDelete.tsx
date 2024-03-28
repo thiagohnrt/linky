@@ -1,11 +1,19 @@
 "use client";
 
 import { BookmarkContext } from "@/contexts/bookmarkContext";
-import Dialog from "../Dialog";
 import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Bookmark } from "@/interfaces/Bookmark";
 import { Button } from "../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
+import { ReloadIcon } from "@radix-ui/react-icons";
+import { cn } from "@/lib/utils";
 
 export function BookmarkDelete() {
   const router = useRouter();
@@ -42,28 +50,34 @@ export function BookmarkDelete() {
   };
 
   return (
-    <Dialog
-      open={isOpenDeleteBookmark}
-      onClose={setIsOpenDeleteBookmark}
-      className="px-8 pt-4 pb-6 w-[450px] bg-neutral-100 dark:bg-neutral-950"
-      title="Are you sure?"
-    >
-      <p>
-        This action cannot be undone. This will permanently delete your
-        bookmark.
-      </p>
-      <div className="flex gap-4 mt-4">
-        <Button
-          variant="destructive"
-          disabled={isLoading}
-          onClick={handleDelete}
-        >
-          Yes, delete
-        </Button>
-        <Button type="button" variant="outline" onClick={handleCancel}>
-          Cancel
-        </Button>
-      </div>
+    <Dialog open={isOpenDeleteBookmark} onOpenChange={setIsOpenDeleteBookmark}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you sure?</DialogTitle>
+        </DialogHeader>
+        <p>
+          This action cannot be undone. This will permanently delete your
+          bookmark.
+        </p>
+        <DialogFooter>
+          <Button
+            variant="destructive"
+            disabled={isLoading}
+            onClick={handleDelete}
+          >
+            <ReloadIcon
+              className={cn(
+                "mr-2 h-4 w-4 animate-spin",
+                isLoading ? "" : "hidden"
+              )}
+            />
+            Yes, delete
+          </Button>
+          <Button type="button" variant="outline" onClick={handleCancel}>
+            Cancel
+          </Button>
+        </DialogFooter>
+      </DialogContent>
     </Dialog>
   );
 }
