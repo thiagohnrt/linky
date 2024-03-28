@@ -1,7 +1,18 @@
 "use client";
 
-import Dialog from "@/components/Dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 
 export function DeleteAllBookmarks() {
@@ -26,14 +37,6 @@ export function DeleteAllBookmarks() {
     setOpen(false);
   };
 
-  const handleClose = () => {
-    close();
-  };
-
-  const handleCancel = () => {
-    close();
-  };
-
   return (
     <div className="flex justify-between items-center p-4">
       <div>
@@ -43,36 +46,41 @@ export function DeleteAllBookmarks() {
           certain.
         </span>
       </div>
-      <Button variant="destructive" onClick={() => setOpen(true)}>
-        Delete all bookmarks
-      </Button>
-      <Dialog
-        open={isOpen}
-        onClose={handleClose}
-        title="Are you sure?"
-        className="px-8 pt-4 pb-6 w-[450px] bg-neutral-100 dark:bg-neutral-950"
-      >
-        <p>
-          This action cannot be undone. This will permanently delete all your
-          bookmarks.
-        </p>
-        <div className="flex gap-4 mt-4">
-          <Button
-            variant="destructive"
-            disabled={isLoading}
-            onClick={handleDelete}
-          >
-            Yes, delete
+      <Dialog open={isOpen} onOpenChange={(open) => setOpen(open)}>
+        <DialogTrigger asChild>
+          <Button variant="destructive" onClick={() => setOpen(true)}>
+            Delete all bookmarks
           </Button>
-          <Button
-            type="button"
-            variant="outline"
-            disabled={isLoading}
-            onClick={handleCancel}
-          >
-            Cancel
-          </Button>
-        </div>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete all
+              your bookmarks.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              variant="destructive"
+              disabled={isLoading}
+              onClick={handleDelete}
+            >
+              <ReloadIcon
+                className={cn(
+                  "mr-2 h-4 w-4 animate-spin",
+                  isLoading ? "" : "hidden"
+                )}
+              />
+              Yes, delete
+            </Button>
+            <DialogClose asChild>
+              <Button type="button" variant="outline" disabled={isLoading}>
+                Cancel
+              </Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
       </Dialog>
     </div>
   );
