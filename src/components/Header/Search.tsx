@@ -4,6 +4,7 @@ import { useCallback, useContext, useEffect } from "react";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { MdKeyboardCommandKey, MdOutlineSearch } from "react-icons/md";
 import { Bookmarks } from "@/interfaces/Bookmark";
+import { usePathname } from "next/navigation";
 
 async function getData(): Promise<Bookmarks[]> {
   try {
@@ -18,6 +19,7 @@ async function getData(): Promise<Bookmarks[]> {
 }
 
 export default function Search() {
+  const pathname = usePathname();
   const { setIsOpenSearch, setBookmarks } = useContext(BookmarkContext);
 
   const fetchBookmarks = useCallback(async () => {
@@ -46,17 +48,23 @@ export default function Search() {
     return () => document.removeEventListener("keydown", down);
   }, [openSearch]);
 
+  if (pathname !== "/") {
+    return <></>;
+  }
+
   return (
-    <button
-      type="button"
-      className="w-full p-2 gap-2 flex items-center text-left "
-      onClick={handleClick}
-    >
-      <MdOutlineSearch size={20} />
-      <span className="flex-auto text-neutral-400">Search</span>
-      <span className="flex items-center p-1 text-xs bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
-        <MdKeyboardCommandKey />K
-      </span>
-    </button>
+    <div className="w-64 bg-white dark:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors duration-300">
+      <button
+        type="button"
+        className="w-full p-2 gap-2 flex items-center text-left "
+        onClick={handleClick}
+      >
+        <MdOutlineSearch size={20} />
+        <span className="flex-auto text-neutral-400">Search</span>
+        <span className="flex items-center p-1 text-xs bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
+          <MdKeyboardCommandKey />K
+        </span>
+      </button>
+    </div>
   );
 }
