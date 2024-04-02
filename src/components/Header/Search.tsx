@@ -3,7 +3,7 @@
 import { useCallback, useContext, useEffect } from "react";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { MdKeyboardCommandKey, MdOutlineSearch } from "react-icons/md";
-import { Bookmark, Bookmarks } from "@/interfaces/Bookmark";
+import { Bookmarks } from "@/interfaces/Bookmark";
 
 async function getData(): Promise<Bookmarks[]> {
   try {
@@ -25,10 +25,26 @@ export default function Search() {
     setBookmarks(data);
   }, [setBookmarks]);
 
-  const handleClick = () => {
+  const openSearch = useCallback(() => {
     fetchBookmarks();
     setIsOpenSearch(true);
+  }, [fetchBookmarks, setIsOpenSearch]);
+
+  const handleClick = () => {
+    openSearch();
   };
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        openSearch();
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, [openSearch]);
 
   return (
     <button

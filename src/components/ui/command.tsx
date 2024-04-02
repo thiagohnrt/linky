@@ -166,12 +166,21 @@ const CommandItemLink = React.forwardRef<
         }}
         {...props}
       >
-        <a ref={linkRef} href={href} target={target} hidden></a>
+        <a
+          hidden
+          ref={linkRef}
+          href={href}
+          target={target}
+          onClick={(e) => e.stopPropagation()}
+        ></a>
         <Link
           href={href}
           target={target}
           className={cn("w-full px-2 py-3", classNameLink)}
-          onClick={() => onSelect && onSelect(value!)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect && onSelect(value!);
+          }}
         >
           {children}
         </Link>

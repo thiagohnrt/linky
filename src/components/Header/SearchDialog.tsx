@@ -28,9 +28,7 @@ export default function SearchDialog() {
                 return (
                   <CommandItemLink
                     key={b}
-                    onSelect={(value) => {
-                      setIsOpenSearch(false);
-                    }}
+                    onSelect={() => setIsOpenSearch(false)}
                     href={bookmark.url ?? ""}
                     classNameLink="flex items-center gap-2 [&>.url]:hover:opacity-50"
                     target="_blank"
