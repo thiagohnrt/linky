@@ -27,7 +27,7 @@ export function Bookmark({ bookmark }: BookmarkProps) {
     },
     {
       text: "Delete Bookmark",
-      className: "text-red-500",
+      className: "text-red-500 focus:text-red-500",
       click: () => {
         setBookmarkData(bookmark);
         setIsOpenDeleteBookmark(true);

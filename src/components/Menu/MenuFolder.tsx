@@ -38,7 +38,7 @@ export function MenuFolder({ folder }: MenuFolderProps) {
     },
     {
       text: "Delete Folder",
-      className: "text-red-500",
+      className: "text-red-500 focus:text-red-500",
       click: () => {
         setFolderData(folder);
         setIsOpenDeleteFolder(true);
