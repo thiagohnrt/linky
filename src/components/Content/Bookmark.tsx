@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Favicon from "../Favicon";
 import { Bookmark } from "@/interfaces/Bookmark";
-import ContextMenu, { ItemMenu } from "../ContextMenu";
+import ContextMenu, { ItemMenu } from "../ui/ContextMenu";
 import { useContext } from "react";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 

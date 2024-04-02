@@ -6,7 +6,7 @@ import {
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuTrigger,
-} from "../ui/context-menu";
+} from "../context-menu";
 import { cn } from "@/lib/utils";
 
 export interface ItemMenu {

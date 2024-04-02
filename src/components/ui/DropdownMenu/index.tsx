@@ -6,7 +6,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "../dropdown-menu";
 import { cn } from "@/lib/utils";
 
 export interface ItemMenu {

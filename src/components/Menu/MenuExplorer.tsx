@@ -1,7 +1,7 @@
 "use client";
 
 import { MdOutlineMoreHoriz } from "react-icons/md";
-import DropdownMenu, { ItemMenu } from "../DropdownMenu";
+import DropdownMenu, { ItemMenu } from "../ui/DropdownMenu";
 import { useContext } from "react";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 
