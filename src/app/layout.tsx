@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Providers } from "@/providers/providers";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <main className="h-[calc(100vh-55px)] flex">{children}</main>
+          <Toaster />
         </Providers>
       </body>
     </html>
