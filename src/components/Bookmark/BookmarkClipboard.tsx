@@ -1,17 +1,15 @@
 "use client";
 
-import { useCallback, useContext, useEffect, useState } from "react";
-import Dialog from "../Dialog";
 import { BookmarkContext } from "@/contexts/bookmarkContext";
 import { Bookmark } from "@/interfaces/Bookmark";
-import { ProgressBar } from "../ProgressBar";
-import { Button } from "../ui/button";
+import { useCallback, useContext, useEffect } from "react";
+import { ToastAction } from "../ui/toast";
+import { useToast } from "../ui/use-toast";
 
 export function BookmarkClipboard() {
   const { setIsOpenFormBookmark, setBookmarkData, bookmarks } =
     useContext(BookmarkContext);
-  const [isOpen, setOpen] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const { toast } = useToast();
 
   const isURL = useCallback((text: string): boolean => {
     try {
@@ -44,64 +42,35 @@ export function BookmarkClipboard() {
     [bookmarks]
   );
 
+  const handleNewBookmark = useCallback(() => {
+    navigator.clipboard.readText().then((clipText) => {
+      setBookmarkData({ url: clipText } as Bookmark);
+      setIsOpenFormBookmark(true);
+    });
+  }, [setBookmarkData, setIsOpenFormBookmark]);
+
   const clipboardRead = useCallback(() => {
     navigator.clipboard.readText().then((clipText) => {
       if (isURL(clipText) && !hasURL(clipText)) {
-        setOpen(true);
+        toast({
+          duration: 10000,
+          title: "URL copied",
+          description: "Want to create a new bookmark?",
+          action: (
+            <ToastAction altText="New Bookmark" onClick={handleNewBookmark}>
+              New Bookmark
+            </ToastAction>
+          ),
+        });
+        // <ProgressBar value={progress} className="w-full h-1" />
       }
     });
-  }, [hasURL, isURL]);
+  }, [handleNewBookmark, hasURL, isURL, toast]);
 
   useEffect(() => {
     window.removeEventListener("focus", clipboardRead);
     window.addEventListener("focus", clipboardRead);
   }, [clipboardRead]);
 
-  useEffect(() => {
-    if (progress === 100) {
-      const timeout = setTimeout(() => {
-        close();
-      }, 200);
-      return () => clearTimeout(timeout);
-    } else if (isOpen) {
-      const timeout = setTimeout(() => {
-        setProgress(progress + 1);
-      }, 100);
-      return () => clearTimeout(timeout);
-    }
-  }, [isOpen, progress]);
-
-  const close = () => {
-    setOpen(false);
-    setProgress(0);
-  };
-
-  const handleNewBookmark = () => {
-    close();
-    navigator.clipboard.readText().then((clipText) => {
-      setBookmarkData({ url: clipText } as Bookmark);
-      setIsOpenFormBookmark(true);
-    });
-  };
-
-  return (
-    <Dialog
-      open={isOpen}
-      onClose={setOpen}
-      className="bottom-8 right-8 bg-neutral-200 dark:bg-neutral-950"
-      position="none"
-      backdrop={false}
-    >
-      <div className="flex gap-8 items-center px-6 py-3">
-        <div className="message">
-          <div>URL copied</div>
-          <div>Want to create a new bookmark?</div>
-        </div>
-        <div className="action">
-          <Button onClick={handleNewBookmark}>New Bookmark</Button>
-        </div>
-      </div>
-      <ProgressBar value={progress} className="w-full h-1" />
-    </Dialog>
-  );
+  return <></>;
 }
