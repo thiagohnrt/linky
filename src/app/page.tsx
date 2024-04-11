@@ -8,6 +8,7 @@ import LoadingExplorer from "@/components/Explorer/Loading";
 import { FolderDelete } from "@/components/Folder/FolderDelete";
 import { FolderDialog } from "@/components/Folder/FolderDialog";
 import SearchDialog from "@/components/Header/SearchDialog";
+import { Shortcuts } from "@/components/shortcuts";
 import { Suspense } from "react";
 
 export const runtime = "edge";
@@ -27,6 +28,7 @@ export default function Home() {
           <Content />
         </Suspense>
       </div>
+      <Shortcuts />
       <BookmarkDialog />
       <BookmarkDelete />
       <BookmarkClipboard />

@@ -11,14 +11,14 @@ export function MenuExplorer() {
   const items: ItemMenu[] = [
     {
       text: "New Bookmark",
-      keyboard: "⌘B",
+      keyboard: "⌘D",
       click: () => {
         setIsOpenFormBookmark(true);
       },
     },
     {
       text: "New Folder",
-      keyboard: "⌘D",
+      keyboard: "⌘O",
       click: () => {
         setIsOpenFormFolder(true);
       },

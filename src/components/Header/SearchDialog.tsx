@@ -1,7 +1,7 @@
 "use client";
 
 import { BookmarkContext } from "@/contexts/bookmarkContext";
-import { useContext } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import Favicon from "../Favicon";
 import {
   CommandDialog,
@@ -11,10 +11,39 @@ import {
   CommandItemLink,
   CommandList,
 } from "../ui/command";
+import { Bookmarks } from "@/interfaces/Bookmark";
+
+async function getData(): Promise<Bookmarks[]> {
+  try {
+    const response = await fetch(`/api`, {
+      // cache: "no-store",
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+  return [];
+}
 
 export default function SearchDialog() {
-  const { bookmarks, isOpenSearch, setIsOpenSearch } =
+  const { setBookmarks, bookmarks, isOpenSearch, setIsOpenSearch } =
     useContext(BookmarkContext);
+
+  const fetchBookmarks = useCallback(async () => {
+    const data = await getData();
+    setBookmarks(data);
+  }, [setBookmarks]);
+
+  const openSearch = useCallback(() => {
+    fetchBookmarks();
+    setIsOpenSearch(true);
+  }, [fetchBookmarks, setIsOpenSearch]);
+
+  useEffect(() => {
+    if (isOpenSearch) {
+      openSearch();
+    }
+  }, [isOpenSearch, openSearch]);
 
   return (
     <CommandDialog open={isOpenSearch} onOpenChange={setIsOpenSearch}>

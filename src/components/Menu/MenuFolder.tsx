@@ -20,7 +20,7 @@ export function MenuFolder({ folder }: MenuFolderProps) {
   const items: ItemMenu[] = [
     {
       text: "New Bookmark",
-      keyboard: "⌘B",
+      keyboard: "⌘D",
       click: () => {
         setBookmarkData({ folderId: folder.id } as Bookmark);
         setIsOpenFormBookmark(true);
