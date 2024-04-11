@@ -59,12 +59,13 @@ export default function SearchDialog() {
                     key={b}
                     onSelect={() => setIsOpenSearch(false)}
                     href={bookmark.url ?? ""}
-                    classNameLink="flex items-center gap-2 [&>.url]:hover:opacity-50"
+                    className="[&[data-selected=true]_.url]:opacity-50"
+                    classNameLink="flex items-center gap-2 text-nowrap"
                     target="_blank"
                   >
                     <Favicon url={bookmark.url ?? ""} />
-                    <span>{bookmark.name}</span>
-                    <span className="url opacity-0 transition-opacity duration-300">
+                    <span className="whitespace-nowrap">{bookmark.name}</span>
+                    <span className="whitespace-nowrap text-ellipsis overflow-hidden url opacity-0 transition-opacity duration-300">
                       {bookmark.url}
                     </span>
                   </CommandItemLink>
