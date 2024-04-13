@@ -4,10 +4,10 @@ import { useState, ReactNode } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { ChevronDown, ChevronRight, FolderIcon } from "lucide-react";
 import { MenuFolder } from "../Menu/MenuFolder";
-import { Folder } from "@/interfaces/Folder";
+import { Folder as IFolder } from "@/interfaces/Folder";
 
 interface FolderProps {
-  folder: Folder;
+  folder: IFolder;
   children: ReactNode;
 }
 
