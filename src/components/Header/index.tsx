@@ -12,7 +12,6 @@ export function Header() {
         <FaBookmark size={20} />
         <div className="select-none ml-2 flex">
           <span className="text-3xl">Linky</span>
-          <span className="text-2xl self-end">.io</span>
           <span className="text-xs ml-4 self-center">
             Your <br /> Bookmark Manager
           </span>
