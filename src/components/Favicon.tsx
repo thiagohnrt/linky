@@ -3,40 +3,26 @@
 import { useState } from "react";
 import { GlobeIcon } from "lucide-react";
 import Image from "next/image";
+import { Bookmark } from "@/interfaces/Bookmark";
 
 interface FaviconProps {
-  url: string;
+  bookmark: Bookmark;
   size?: number;
   className?: string;
 }
 
 export default function Favicon({
-  url,
+  bookmark,
   size = 16,
   className = "",
 }: FaviconProps) {
-  const [isErrorFavicon, setIsErrorFavicon] = useState(false);
-  const onErrorFavicon = () => {
-    setIsErrorFavicon(true);
-  };
-  const onLoadFavicon = () => {
-    setIsErrorFavicon(false);
-  };
   return (
-    <>
-      {isErrorFavicon ? (
-        <GlobeIcon size={size} className={className}></GlobeIcon>
-      ) : (
-        <Image
-          src={"http://www.google.com/s2/favicons?domain=" + url}
-          alt="Favicon"
-          width={size}
-          height={size}
-          className={className}
-          onLoad={onLoadFavicon}
-          onError={onErrorFavicon}
-        />
-      )}
-    </>
+    <Image
+      src={`/api/favicon?url=${bookmark.url}&title=${bookmark.name}`}
+      alt="Favicon"
+      width={size}
+      height={size}
+      className={className}
+    />
   );
 }

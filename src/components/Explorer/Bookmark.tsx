@@ -3,10 +3,10 @@
 import Link from "next/link";
 import Favicon from "../Favicon";
 import { MenuBookmark } from "../Menu/MenuBookmark";
-import { Bookmark } from "@/interfaces/Bookmark";
+import { Bookmark as IBookmark } from "@/interfaces/Bookmark";
 
 interface BookmarkProps {
-  bookmark: Bookmark;
+  bookmark: IBookmark;
 }
 
 export function Bookmark({ bookmark }: BookmarkProps) {
@@ -17,7 +17,7 @@ export function Bookmark({ bookmark }: BookmarkProps) {
         target="_blank"
         className="flex gap-2 w-full items-center"
       >
-        <Favicon url={bookmark.url ?? ""} />
+        <Favicon bookmark={bookmark} />
         <span>{bookmark.name}</span>
       </Link>
       <MenuBookmark bookmark={bookmark} />
