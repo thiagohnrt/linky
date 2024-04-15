@@ -95,6 +95,9 @@
   animation: loading 2s infinite ease-out;
   color: transparent;
 }
+.skeleton * {
+  background: transparent;
+}
 @keyframes loading {
   0% {
     background-position: -468px 0;

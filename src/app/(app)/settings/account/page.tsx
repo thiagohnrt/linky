@@ -1,18 +1,32 @@
+"use client";
+
 import { AccountLogOut } from "@/components/Settings/Account/LogOut";
 import { SettingsPage } from "@/components/Settings/SettingsPage";
-import { getMe } from "@/services/dataService";
+import { User } from "@/interfaces/User";
+import { useEffect, useState } from "react";
 
-export const runtime = "edge";
+export default function Account() {
+  const [user, setUser] = useState<User>();
 
-export default async function Account() {
-  const user = await getMe();
+  const getMe = async () => {
+    const response = await fetch(`/api/me`, {
+      cache: "no-store",
+    });
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    setUser(await response.json());
+  };
+
+  useEffect(() => {
+    getMe();
+  }, []);
+
   return (
     <SettingsPage title="Account">
       <div className="flex justify-between">
-        <div>
+        <div className={user?.username ? "" : "skeleton"}>
           <p className="mb-1">You are logged in as:</p>
-          <span className="border border-input px-2 rounded-sm bg-neutral-800">
-            {user.username}
+          <span className="border border-input px-2 rounded-sm bg-neutral-200 dark:bg-neutral-800">
+            {user?.username}
           </span>
         </div>
         <AccountLogOut />
