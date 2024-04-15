@@ -2,6 +2,8 @@ import { AccountLogOut } from "@/components/Settings/Account/LogOut";
 import { SettingsPage } from "@/components/Settings/SettingsPage";
 import { getMe } from "@/services/dataService";
 
+export const runtime = "edge";
+
 export default async function Account() {
   const user = await getMe();
   return (
