@@ -12,7 +12,6 @@ export default function Account() {
     const response = await fetch(`/api/me`, {
       cache: "no-store",
     });
-    await new Promise((resolve) => setTimeout(resolve, 3000));
     setUser(await response.json());
   };
 

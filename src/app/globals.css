@@ -96,7 +96,7 @@
   color: transparent;
 }
 .skeleton * {
-  background: transparent;
+  background: transparent !important;
 }
 @keyframes loading {
   0% {
