@@ -1,6 +1,6 @@
 "use client";
 
-import { SettingsIcon, UploadIcon } from "lucide-react";
+import { SettingsIcon, UploadIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
@@ -12,6 +12,11 @@ export function Menubar() {
         href="/settings"
         text="General"
         icon={<SettingsIcon size={18} />}
+      />
+      <ItemMenu
+        href="/settings/account"
+        text="Account"
+        icon={<UserIcon size={18} />}
       />
       <Separator label="Advanced" />
       <ItemMenu

@@ -11,7 +11,7 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div className="flex flex-auto items-center justify-center dark:bg-neutral-900">
+    <div className="h-[100vh] flex items-center justify-center">
       <div className="flex items-center z-20">
         <div className="md:w-[420px]">
           <h1 className="text-3xl">Something went wrong!!!</h1>

@@ -4,6 +4,7 @@ import Search from "./Search";
 import Icon from "./Icon";
 import { Settings2Icon } from "lucide-react";
 import ThemeIcon from "./ThemeIcon";
+import { RepositoryIcon } from "./RepositoryIcon";
 
 export function Header() {
   return (
@@ -27,15 +28,7 @@ export function Header() {
           </Link>
           <ThemeIcon />
           <div className="w-px h-6 bg-black dark:bg-white"></div>
-          <Link
-            href="https://github.com/thiagohbhonorato/linky"
-            target="_blank"
-            tabIndex={-1}
-          >
-            <Icon title="View GitHub">
-              <FaGithub size={20} />
-            </Icon>
-          </Link>
+          <RepositoryIcon />
         </div>
       </div>
     </header>
