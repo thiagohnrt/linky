@@ -10,7 +10,7 @@ export function Header() {
   return (
     <header className="h-[55px] px-8 flex justify-between items-center bg-neutral-200 dark:bg-neutral-950 transition-colors duration-300">
       <Link href="/" className="flex gap-2 items-center">
-        <FaBookmark size={20} />
+        <FaBookmark size={20} className="hidden sm:inline-block" />
         <div className="select-none ml-2 flex">
           <span className="text-3xl">Linky</span>
           <span className="text-xs ml-4 self-center">
@@ -27,8 +27,8 @@ export function Header() {
             </Icon>
           </Link>
           <ThemeIcon />
-          <div className="w-px h-6 bg-black dark:bg-white"></div>
-          <RepositoryIcon />
+          <div className="hidden sm:inline-block w-px h-6 bg-black dark:bg-white"></div>
+          <RepositoryIcon className="hidden sm:inline-block" />
         </div>
       </div>
     </header>

@@ -2,12 +2,17 @@ import Link from "next/link";
 import Icon from "./Icon";
 import { FaGithub } from "react-icons/fa";
 
-export function RepositoryIcon() {
+interface RepositoryIconProps {
+  className?: string;
+}
+
+export function RepositoryIcon({ className }: RepositoryIconProps) {
   return (
     <Link
       href="https://github.com/thiagohbhonorato/linky"
       target="_blank"
       tabIndex={-1}
+      className={className}
     >
       <Icon title="View GitHub">
         <FaGithub size={20} />
