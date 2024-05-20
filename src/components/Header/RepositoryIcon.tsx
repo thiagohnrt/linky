@@ -9,7 +9,7 @@ interface RepositoryIconProps {
 export function RepositoryIcon({ className }: RepositoryIconProps) {
   return (
     <Link
-      href="https://github.com/thiagohbhonorato/linky"
+      href="https://github.com/thiagohnrt/linky"
       target="_blank"
       tabIndex={-1}
       className={className}
