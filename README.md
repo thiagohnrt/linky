@@ -12,8 +12,8 @@ Linky is a bookmark management application developed with Next.js. It allows use
   <img alt="Forks" src="https://img.shields.io/github/forks/thiagohbhonorato/linky?color=4A90E2&label=FORKS&logo=3C424B&logoColor=3C424B&style=for-the-badge&labelColor=222222" />
   <img alt="Issues" src="https://img.shields.io/github/issues/thiagohbhonorato/linky?color=4A90E2&label=ISSUES&logo=3C424B&logoColor=3C424B&style=for-the-badge&labelColor=222222" />
   <img alt="GitHub license" src="https://img.shields.io/github/license/thiagohbhonorato/linky?color=4A90E2&label=LICENSE&logo=3C424B&logoColor=3C424B&style=for-the-badge&labelColor=222222" />
-  <a href="https://github.com/thiagohbhonorato">
-    <img alt="Follow thiagohbhonorato" src="https://img.shields.io/static/v1?label=Follow&message=thiagohbhonorato&style=for-the-badge&color=4A90E2&labelColor=222222" />
+  <a href="https://github.com/thiagohnrt">
+    <img alt="Follow thiagohnrt" src="https://img.shields.io/static/v1?label=Follow&message=thiagohnrt&style=for-the-badge&color=4A90E2&labelColor=222222" />
   </a>
 </p>
 
